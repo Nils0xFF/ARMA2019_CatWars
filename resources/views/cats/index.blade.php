@@ -17,8 +17,7 @@
         <tr>
         <th scope="row">{{$cat->id}}</th>
         <td>{{$cat->current_hp}}</td>
-        <!--<td>{{$cat->breed_id}}</td>
-        <td>{{$cat->breed->name}}</td>-->
+        <td>{{$cat->breed_id}}</td>
         </tr>
         @endforeach
     </tbody>
