@@ -9,4 +9,8 @@ class PackController extends Controller
     {
         return view('packs.index')->with('packs',Pack::all());
     }
+
+    public function delete($id){
+        Pack::where('id',$id)->delete();
+    }
 }
