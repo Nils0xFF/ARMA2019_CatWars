@@ -13,7 +13,7 @@
   <body>
   
     <nav class="navbar navbar-light bg-light navbar-expand-lg">
-      <a class="navbar-brand mb-0 h1" href ="#" >Navbar</a>
+      <a class="navbar-brand mb-0 h1" href ="#" >Battle Cats</a>
       <div class="navbar-nav">
       <a class="nav-item nav-link" href="{{ url('packs') }}">Packs</a>
       <a class="nav-item nav-link" href="{{ url('cats') }}">Cats</a>
