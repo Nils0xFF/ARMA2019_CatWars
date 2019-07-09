@@ -1,7 +1,7 @@
 
 @extends('layouts.backend')
 
-@section('rassen')
+@section('content')
 
 <table class="table">
     <thead>
@@ -10,7 +10,6 @@
         <th scope="col">Name</th>
         <th scope="col">Max. HP</th>
         <th scope="col">Cuteness</th>
-        <th scope="col">Claw Sharpness</th>
         <th scope="col">Fur Thickness</th>
         <th scope="col">Claw Sharpness</th>
         <th scope="col">Rareness</th>
@@ -21,12 +20,11 @@
         <tr>
         <th scope="row">{{$breed->id}}</th>
         <td>{{$breed->name}}</td>
-        <td>{{$breed->name}}</td>
-        <td>{{$breed->name}}</td>
-        <td>{{$breed->name}}</td>
-        <td>{{$breed->name}}</td>
-        <td>{{$breed->name}}</td>
-        <td>{{$breed->name}}</td>
+        <td>{{$breed->max_hp}}</td>
+        <td>{{$breed->cuteness}}</td>
+        <td>{{$breed->fur_thickness}}</td>
+        <td>{{$breed->claw_sharpness}}</td>
+        <td>{{$breed->rareness}}</td>
         </tr>
         @endforeach
     </tbody>
