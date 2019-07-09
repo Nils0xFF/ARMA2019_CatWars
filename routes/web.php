@@ -17,3 +17,9 @@ Route::get('/', function () {
 
 Route::get('breeds', 'BreedController@getIndex');
 Route::get('breeds/index', 'BreedController@getIndex');
+
+Route::get('cats', 'CatController@getIndex');
+Route::get('cats/index', 'CatController@getIndex');
+
+Route::get('packs', 'PackController@getIndex');
+Route::get('cats/index', 'PackController@getIndex');
