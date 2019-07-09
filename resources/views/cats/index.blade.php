@@ -8,6 +8,7 @@
         <tr>
         <th scope="col">#</th>
         <th scope="col">Current HP</th>
+        <th scope="col">Breed ID</th>
         <th scope="col">Breed</th>
         </tr>
     </thead>
@@ -16,6 +17,7 @@
         <tr>
         <th scope="row">{{$cat->id}}</th>
         <td>{{$cat->current_hp}}</td>
+        <td>{{$cat->breed->id}}</td>
         <td>{{$cat->breed->name}}</td>
         </tr>
         @endforeach
