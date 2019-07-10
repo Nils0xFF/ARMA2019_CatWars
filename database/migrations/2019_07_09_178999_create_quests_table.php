@@ -26,11 +26,13 @@ class CreateQuestsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
 
+            $table->boolean('completed');
 
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('quest_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('quest_id')->references('id')->on('quests')->onDelete('cascade');
+
         });
     }
 

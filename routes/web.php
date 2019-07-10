@@ -21,3 +21,12 @@ Route::get('cats/index', 'CatController@getIndex');
 
 Route::get('packs', 'PackController@getIndex');
 Route::get('cats/index', 'PackController@getIndex');
+
+Route::get('users', 'UserController@getIndex');
+Route::get('users/index', 'UserController@getIndex');
+
+Route::get('rarities', 'RarityController@getIndex');
+Route::get('rarities/index', 'RarityController@getIndex');
+
+Route::get('quests', 'QuestController@getIndex');
+Route::get('quests/index', 'QuestController@getIndex');

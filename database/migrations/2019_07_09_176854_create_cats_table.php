@@ -17,9 +17,14 @@ class CreateCatsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('current_hp')->unsigned();
+
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->bigInteger('breed_id')->unsigned();
             $table->foreign('breed_id')->references('id')->on('breeds')->onDelete('cascade');
         });
+
     }
 
     /**
