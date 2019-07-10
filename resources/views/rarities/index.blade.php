@@ -26,8 +26,8 @@
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/rarities/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Rarity</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/rarities/new') }}" >Add First Rarity</a>
 @endif
 @endsection

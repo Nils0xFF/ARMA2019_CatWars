@@ -18,7 +18,7 @@
             <tr>
             <th scope="row">{{$pack->id}}</th>
             <td>{{$pack->name}}</td>
-            <td>{{$pack->price}}</td>
+            <td>@if($pack->price < 100)&nbsp @endif {{$pack->price}}</td>
             <td>
                 <a type="button" class="btn btn-warning" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
                 <a type="button" class="btn btn-danger" href="{{ url('admin/packs/delete/'.$pack->id) }}" >Delete</a>
@@ -27,9 +27,9 @@
             @endforeach
         </tbody>
     </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Pack</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add First Pack</a>
 @endif
 
 

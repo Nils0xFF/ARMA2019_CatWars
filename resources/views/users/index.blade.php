@@ -22,6 +22,7 @@
         <td>{{$user->coins}}</td>
         <td>
             <a type="button" class="btn btn-warning" href="{{ url('admin/users/edit/'.$user->id) }}" >Edit</a>
+            <a type="button" class="btn btn-danger" href="{{ url('admin/users/delete/'.$user->id) }}" >Delete</a>
         </td>
         </tr>
         @endforeach

@@ -29,9 +29,9 @@
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Cat</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add First Cat</a>
 @endif
 
 @endsection

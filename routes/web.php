@@ -76,16 +76,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('packs/delete/{id?}', 'PackController@postDelete');
 
 
-    //Users
-    Route::get('users', 'UserController@getIndex');
-    Route::get('users/index', 'UserController@getIndex');
-
-    Route::get('users/edit/{id?}', 'UserController@getEdit');
-    Route::post('users/edit/{id?}', 'UserController@postEdit');
-
-
     //Quests
-
     Route::get('quests', 'QuestController@getIndex');
     Route::get('quests/index', 'QuestController@getIndex');
 
@@ -96,6 +87,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::post('quests/edit/{id?}', 'QuestController@postEdit');
 
     Route::get('quests/delete/{id?}', 'QuestController@postDelete');
+
+
+    //Users
+    Route::get('users', 'UserController@getIndex');
+    Route::get('users/index', 'UserController@getIndex');
+
+    Route::get('users/edit/{id?}', 'UserController@getEdit');
+    Route::post('users/edit/{id?}', 'UserController@postEdit');
+    
+    Route::get('users/delete/{id?}', 'UserController@postDelete');
 });
 
 

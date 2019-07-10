@@ -28,8 +28,8 @@
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/quests/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Quest</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/quests/new') }}" >Add First Quest</a>
 @endif
 @endsection

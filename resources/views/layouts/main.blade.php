@@ -14,7 +14,7 @@
   
     <nav class="navbar navbar-light bg-light navbar-expand-lg">
     
-      <a class="navbar-brand mb-0 h1" href ="#" >Battle Cats</a>
+    <a class="navbar-brand mb-0 h1" href ="{{url('home')}}" >Battle Cats</a>
       <div class="navbar-nav">
       @guest
         <li class="nav-item">

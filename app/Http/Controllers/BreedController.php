@@ -9,7 +9,8 @@ class BreedController extends Controller
 {
     public function getIndex()
     {
-        return view('breeds.index')->with('breeds',Breed::all());
+        $breeds = Breed::orderBy('max_hp','desc')->get();
+        return view('breeds.index')->with('breeds',$breeds);
     }
 
     public function getNew()
@@ -32,12 +33,12 @@ class BreedController extends Controller
             $breed->fur_thickness = Request::input('fur_thickness');
             $breed->max_hp = Request::input('max_hp');
             $breed->save(); 
-            return redirect('breeds');
+            return redirect('admin/breeds');
         }
         else
         {
-            return redirect('breeds/new')->withErrors($validator)->withInput();
-            // edit: return redirect('breeds/edit/'.$breed->id)->with('breed', $breed)->withErrors($validator)->withInput();
+            return redirect('admin/breeds/new')->withErrors($validator)->withInput();
+            // edit: return redirect('admin/breeds/edit/'.$breed->id)->with('breed', $breed)->withErrors($validator)->withInput();
         }
 
     }
@@ -49,7 +50,7 @@ class BreedController extends Controller
         {
             return view('breeds.show')->with('breed', $breed);
         }
-        return redirect('breeds');
+        return redirect('admin/breeds');
     }
     
     public function getEdit($id = null)
@@ -59,7 +60,7 @@ class BreedController extends Controller
         {
             return view('breeds.edit')->with('breed', $breed);
         }
-        return redirect('breeds');
+        return redirect('admin/breeds');
     }
     
     public function postEdit($id = null)
@@ -67,16 +68,25 @@ class BreedController extends Controller
         $breed = Breed::find($id);
         if ($breed)
         {
-            $breed->name = Request::input('name');
-            $breed->fur_thickness = Request::input('fur_thickness');
-            $breed->claw_sharpness = Request::input('claw_sharpness');
-            $breed->cuteness = Request::input('cuteness');
-            $breed->rarity_id = Request::input('rarity_id');
-            $breed->fur_thickness = Request::input('fur_thickness');
-            $breed->max_hp = Request::input('max_hp');
-            $breed->save(); 
+            $validator = Validator::make(Request::all(), Breed::$rules);
+
+            if ($validator->passes())
+            { 
+                $breed->name = Request::input('name');
+                $breed->fur_thickness = Request::input('fur_thickness');
+                $breed->claw_sharpness = Request::input('claw_sharpness');
+                $breed->cuteness = Request::input('cuteness');
+                $breed->rarity_id = Request::input('rarity_id');
+                $breed->fur_thickness = Request::input('fur_thickness');
+                $breed->max_hp = Request::input('max_hp');
+                $breed->save(); 
+            }
+            else
+            {
+                return redirect('admin/breeds/edit/'.$id)->withErrors($validator)->withInput()->with('breed',$breed);
+            }
         }
-        return redirect('breeds');
+        return redirect('admin/breeds');
     }
     
     public function postDelete($id = null)
@@ -86,6 +96,6 @@ class BreedController extends Controller
         {
             $breed->delete();
         }
-        return redirect('breeds');
+        return redirect('admin/breeds');
     }
 }
