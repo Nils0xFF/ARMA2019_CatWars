@@ -13,6 +13,7 @@
         <th scope="col">Fur Thickness</th>
         <th scope="col">Claw Sharpness</th>
         <th scope="col">Rareness</th>
+        <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,10 @@
         <td>{{$breed->fur_thickness}}</td>
         <td>{{$breed->claw_sharpness}}</td>
         <td>{{$breed->rareness}}</td>
+        <td>
+            <a type="button" class="btn btn-warning" href="{{ url('breeds/edit/'.$breed->id) }}" >Edit</a>
+            <a type="button" class="btn btn-danger" href="{{ url('breeds/delete/'.$breed->id) }}" >Delete</a>
+        </td>
         </tr>
         @endforeach
     </tbody>
