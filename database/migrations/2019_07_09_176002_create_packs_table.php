@@ -20,7 +20,7 @@ class CreatePacksTable extends Migration
             $table->integer('price');
         });
 
-        Schema::create('pack_breed',function (Blueprint $table) {
+        Schema::create('breed_pack',function (Blueprint $table) {
             $table->bigIncrements('id');
             
             $table->bigInteger('pack_id')->unsigned();
