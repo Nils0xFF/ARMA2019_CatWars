@@ -14,8 +14,15 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('init/roles', 'InitController@createRoles');
+Route::get('init/admin', 'InitController@makeMeAdmin');
 
-Route::group(['middleware' => ['auth']], function() {
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function() {
+
+    // Default Admin Route
+    Route::get('/', 'UserController@getIndex');
+    
     //Rarity
     Route::get('rarities', 'RarityController@getIndex');
     Route::get('rarities/index', 'RarityController@getIndex');
