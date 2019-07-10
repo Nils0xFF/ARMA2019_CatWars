@@ -12,6 +12,6 @@ class Cat extends Model
     ];
 
     function breed(){
-        return $this->belongsTo('App/Models/Breed');
+        return $this->belongsTo('App\Models\Breed');
     }
 }
