@@ -21,7 +21,10 @@ class CreateBreedsTable extends Migration
             $table->integer('cuteness')->unsigned();        //DODGE CHANCE 
             $table->integer('fur_thickness')->unsigned();   //DEFENSE
             $table->integer('claw_sharpness')->unsigned();  //ATTACK
-            $table->enum('rareness',['common','rare','epic','legendary']);
+            
+            $table->bigInteger('rarity_id')->unsigned();
+            $table->foreign('rarity_id')->references('id')->on('rarities')->onDelete('cascade');
+            
         });
     }
 

@@ -22,6 +22,7 @@ class CreatePacksTable extends Migration
 
         Schema::create('pack_breed',function (Blueprint $table) {
             $table->bigIncrements('id');
+            
             $table->bigInteger('pack_id')->unsigned();
             $table->bigInteger('breed_id')->unsigned();
             $table->foreign('breed_id')->references('id')->on('breeds')->onDelete('cascade');
@@ -37,5 +38,6 @@ class CreatePacksTable extends Migration
     public function down()
     {
         Schema::dropIfExists('packs');
+        Schema::dropIfExists('pack_breed');
     }
 }
