@@ -25,7 +25,7 @@ class QuestController extends Controller
         {
             $quest = new Quest();
             $quest->name = Request::input('name');
-            $quest->text = Request::input('text');
+            $quest->description = Request::input('description');
             $quest->duration = Request::input('duration');
             $quest->reward = Request::input('reward');
             $quest->save(); 
@@ -65,7 +65,7 @@ class QuestController extends Controller
         if ($quest)
         {
             $quest->name = Request::input('name');
-            $quest->text = Request::input('text');
+            $quest->description = Request::input('description');
             $quest->duration = Request::input('duration');
             $quest->reward = Request::input('reward');
             $quest->save();

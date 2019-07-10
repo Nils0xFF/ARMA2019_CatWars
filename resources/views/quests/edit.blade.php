@@ -8,11 +8,11 @@
 {{Form::model($quest, ['url' => 'quests/edit/'.$quest->id])}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}
-    {{Form::number('name', null, ['class'=>'form-control'])}}
+    {{Form::text('name', null, ['class'=>'form-control'])}}
 </div>
 <div class="form-group">
     {{Form::label('description', 'Description')}}
-    {{Form::number('description', null, ['class'=>'form-control'])}}
+    {{Form::text('description', null, ['class'=>'form-control'])}}
 </div>
 <div class="form-group">
     {{Form::label('duration', 'Duration')}}
