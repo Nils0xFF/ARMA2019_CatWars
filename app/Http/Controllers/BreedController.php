@@ -9,4 +9,9 @@ class BreedController extends Controller
     {
         return view('breeds.index')->with('breeds',Breed::all());
     }
+
+    public function create()
+    {
+        
+    }
 }

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PackController@getIndex');
 
 Route::get('breeds', 'BreedController@getIndex');
 Route::get('breeds/index', 'BreedController@getIndex');
