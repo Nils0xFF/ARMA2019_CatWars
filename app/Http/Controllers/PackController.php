@@ -43,7 +43,7 @@ class PackController extends Controller
         $pack = Pack::find($id);
         if ($pack)
         {
-            return view('packs.show')->with('pack', $pack);
+            return view('packs.detail')->with('pack', $pack);
         }
         return redirect('admin/packs');
     }

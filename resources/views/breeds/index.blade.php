@@ -28,6 +28,7 @@
             <td>{{$breed->claw_sharpness}}</td>
             <td>{{$breed->rarity->name}}</td>
             <td>
+                <a type="button" class="btn btn-secondary" href="{{ url('admin/breeds/detail/'.$breed->id) }}" >Detail</a>
                 <a type="button" class="btn btn-warning" href="{{ url('admin/breeds/edit/'.$breed->id) }}" >Edit</a>
                 <a type="button" class="btn btn-danger" href="{{ url('admin/breeds/delete/'.$breed->id) }}" >Delete</a>
             </td>

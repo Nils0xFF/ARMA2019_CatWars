@@ -48,7 +48,7 @@ class BreedController extends Controller
         $breed = Breed::find($id);
         if ($breed)
         {
-            return view('breeds.show')->with('breed', $breed);
+            return view('breeds.detail')->with('breed', $breed);
         }
         return redirect('admin/breeds');
     }

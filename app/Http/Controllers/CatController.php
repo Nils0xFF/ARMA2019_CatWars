@@ -47,7 +47,7 @@ class CatController extends Controller
         $cat = Cat::find($id);
         if ($cat)
         {
-            return view('cats.show')->with('cat', $cat);
+            return view('cats.detail')->with('cat', $cat);
         }
         return redirect('admin/cats');
     }

@@ -20,6 +20,7 @@
             <td>{{$pack->name}}</td>
             <td>@if($pack->price < 100)&nbsp @endif {{$pack->price}}</td>
             <td>
+                <a type="button" class="btn btn-secondary" href="{{ url('admin/packs/detail/'.$pack->id) }}" >Detail</a>
                 <a type="button" class="btn btn-warning" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
                 <a type="button" class="btn btn-danger" href="{{ url('admin/packs/delete/'.$pack->id) }}" >Delete</a>
             </td>

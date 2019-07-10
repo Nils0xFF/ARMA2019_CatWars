@@ -21,6 +21,7 @@
         <td>{{$quest->duration}}</td>
         <td>{{$quest->reward}}</td>
         <td>
+            <a type="button" class="btn btn-secondary" href="{{ url('admin/quests/detail/'.$quest->id) }}" >Detail</a>
             <a type="button" class="btn btn-warning" href="{{ url('admin/quests/edit/'.$quest->id) }}" >Edit</a>
             <a type="button" class="btn btn-danger" href="{{ url('admin/quests/delete/'.$quest->id) }}" >Delete</a>
         </td>
