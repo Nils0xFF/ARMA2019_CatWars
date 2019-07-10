@@ -2,12 +2,14 @@
 
 @section('content')
 
+@if($rarities->count() > 0)
 <table class="table">
     <thead>
         <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Chance</th>
+        <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +26,8 @@
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary" href="{{ url('rarities/new') }}" >Add</a>
-
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add</a>
+@else 
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add First Rarity</a>
+@endif
 @endsection

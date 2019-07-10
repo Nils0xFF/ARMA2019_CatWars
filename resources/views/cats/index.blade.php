@@ -3,6 +3,7 @@
 
 @section('content')
 
+@if($cats->count() > 0)
 <table class="table">
     <thead>
         <tr>
@@ -28,6 +29,9 @@
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary" href="{{ url('cats/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add</a>
+@else 
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add First Cat</a>
+@endif
 
 @endsection

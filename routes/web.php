@@ -69,34 +69,26 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('packs/delete/{id?}', 'PackController@postDelete');
 
 
-    //Quests
-    Route::get('users', 'QuestController@getIndex');
-    Route::get('users/index', 'QuestController@getIndex');
-
-    Route::get('users/new', 'QuestController@getNew');
-    Route::post('users/new', 'QuestController@postNew');
-
-    Route::get('users/edit/{id?}', 'QuestController@getEdit');
-    Route::post('users/edit/{id?}', 'QuestController@postEdit');
-
-    Route::get('users/delete/{id?}', 'QuestController@postDelete');
-
-
     //Users
     Route::get('users', 'UserController@getIndex');
     Route::get('users/index', 'UserController@getIndex');
 
+    Route::get('users/edit/{id?}', 'UserController@getEdit');
+    Route::post('users/edit/{id?}', 'UserController@postEdit');
+
+
+    //Quests
 
     Route::get('quests', 'QuestController@getIndex');
     Route::get('quests/index', 'QuestController@getIndex');
 
-    Route::get('quests/new', 'UserController@getNew');
-    Route::post('quests/new', 'UserController@postNew');
+    Route::get('quests/new', 'QuestController@getNew');
+    Route::post('quests/new', 'QuestController@postNew');
 
-    Route::get('quests/edit/{id?}', 'UserController@getEdit');
-    Route::post('quests/edit/{id?}', 'UserController@postEdit');
+    Route::get('quests/edit/{id?}', 'QuestController@getEdit');
+    Route::post('quests/edit/{id?}', 'QuestController@postEdit');
 
-    Route::get('quests/delete/{id?}', 'UserController@postDelete');
+    Route::get('quests/delete/{id?}', 'QuestController@postDelete');
 });
 
 

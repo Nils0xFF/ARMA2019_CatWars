@@ -2,6 +2,7 @@
 
 @section('content')
 
+@if($quests->count() > 0)
 <table class="table">
     <thead>
         <tr>
@@ -27,6 +28,8 @@
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary" href="{{ url('quests/new') }}" >Add</a>
-
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add</a>
+@else 
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add First Quest</a>
+@endif
 @endsection
