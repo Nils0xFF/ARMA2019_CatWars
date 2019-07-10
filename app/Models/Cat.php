@@ -7,11 +7,14 @@ class Cat extends Model
 {
     public static $rules = [
         "user_id" => "required",
-        "breed_id" => "required",
-        "fur_thickness" => "required|int|gt:0",
+        "breed_id" => "required"
     ];
 
     function breed(){
         return $this->belongsTo('App\Models\Breed');
+    }
+
+    function user(){
+        return $this->belongsTo('App\Models\User');
     }
 }
