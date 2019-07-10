@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Breed extends Model
+class Quest extends Model
 {
     
 }

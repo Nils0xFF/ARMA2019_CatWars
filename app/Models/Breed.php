@@ -5,6 +5,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Breed extends Model
 {
-    protected $table = 'breeds';
-    protected $primaryKey = 'id';
+    
 }
