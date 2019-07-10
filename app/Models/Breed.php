@@ -15,14 +15,14 @@ class Breed extends Model
     ];
 
     function rarity(){
-        $this->belongsTo('App\Models\Rarity');
+        return $this->belongsTo('App\Models\Rarity');
     }
 
     function cats(){
-        $this->hasMany('App\Models\Cat');
+        return $this->hasMany('App\Models\Cat');
     }
 
     function packs(){
-        $this->hasMany('App\Models\Packs');
+        return $this->hasMany('App\Models\Packs');
     }
 }

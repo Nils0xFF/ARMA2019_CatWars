@@ -11,6 +11,6 @@ class Rarity extends Model
     ];
 
     function breeds(){
-        $this->hasMany('App\Models\Breeds');
+        return $this->hasMany('App\Models\Breeds');
     }
 }
