@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'PackController@getIndex');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('breeds', 'BreedController@getIndex');
 Route::get('breeds/index', 'BreedController@getIndex');
@@ -32,3 +33,7 @@ Route::get('rarities/index', 'RarityController@getIndex');
 
 Route::get('quests', 'QuestController@getIndex');
 Route::get('quests/index', 'QuestController@getIndex');
+
+Auth::routes();
+
+
