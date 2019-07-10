@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('rarities', 'RarityController@getIndex');
     Route::get('rarities/index', 'RarityController@getIndex');
 
+    Route::get('rarities/detail/{id?}', 'RarityController@getDetail');
+
     Route::get('rarities/new', 'RarityController@getNew');
     Route::post('rarities/new', 'RarityController@postNew');
 
@@ -41,6 +43,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('breeds', 'BreedController@getIndex');
     Route::get('breeds/index', 'BreedController@getIndex');
 
+    Route::get('breeds/detail/{id?}', 'BreedController@getDetail');
+
     Route::get('breeds/new', 'BreedController@getNew');
     Route::post('breeds/new', 'BreedController@postNew');
 
@@ -53,6 +57,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     //Cats
     Route::get('cats', 'CatController@getIndex');
     Route::get('cats/index', 'CatController@getIndex');
+
+    Route::get('cats/detail/{id?}', 'CatController@getDetail');
 
     Route::get('cats/new', 'CatController@getNew');
     Route::post('cats/new', 'CatController@postNew');
@@ -67,6 +73,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('packs', 'PackController@getIndex');
     Route::get('packs/index', 'PackController@getIndex');
 
+    Route::get('packs/detail/{id?}', 'PackController@getDetail');
+
     Route::get('packs/new', 'PackController@getNew');
     Route::post('packs/new', 'PackController@postNew');
 
@@ -80,6 +88,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('quests', 'QuestController@getIndex');
     Route::get('quests/index', 'QuestController@getIndex');
 
+    Route::get('quests/detail/{id?}', 'QuestController@getDetail');
+
     Route::get('quests/new', 'QuestController@getNew');
     Route::post('quests/new', 'QuestController@postNew');
 
@@ -92,6 +102,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     //Users
     Route::get('users', 'UserController@getIndex');
     Route::get('users/index', 'UserController@getIndex');
+    
+    Route::get('users/detail/{id?}', 'UserController@getDetail');
 
     Route::get('users/edit/{id?}', 'UserController@getEdit');
     Route::post('users/edit/{id?}', 'UserController@postEdit');

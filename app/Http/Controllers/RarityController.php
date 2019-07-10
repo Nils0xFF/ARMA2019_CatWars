@@ -43,7 +43,7 @@ class RarityController extends Controller
         $rarity = Rarity::find($id);
         if ($rarity)
         {
-            return view('rarities.show')->with('rarity', $rarity);
+            return view('rarities.detail')->with('rarity', $rarity);
         }
         return redirect('admin/rarities');
     }

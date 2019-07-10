@@ -44,7 +44,7 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         if ($quest)
         {
-            return view('quests.show')->with('quest', $quest);
+            return view('quests.detail')->with('quest', $quest);
         }
         return redirect('admin/quests');
     }

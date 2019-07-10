@@ -12,6 +12,16 @@ class UserController extends Controller
         return view('users.index')->with('users',User::all());
     }
     
+    public function getDetail($id = null)
+    {
+        $user = User::find($id);
+        if ($user)
+        {
+            return view('users.detail')->with('user', $user);
+        }
+        return redirect('admin/users');
+    }
+    
     public function getEdit($id = null)
     {
         $user = User::find($id);

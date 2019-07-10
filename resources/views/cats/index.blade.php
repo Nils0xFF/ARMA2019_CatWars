@@ -22,6 +22,7 @@
         <td>{{$cat->breed->name}}</td>
         <td>{{$cat->user->name}}</td>
         <td>
+            <a type="button" class="btn btn-secondary" href="{{ url('admin/cats/detail/'.$cat->id) }}" >Detail</a>
             <a type="button" class="btn btn-warning" href="{{ url('admin/cats/edit/'.$cat->id) }}" >Edit</a>
             <a type="button" class="btn btn-danger" href="{{ url('admin/cats/delete/'.$cat->id) }}" >Delete</a>
         </td>
