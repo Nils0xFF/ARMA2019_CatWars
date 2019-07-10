@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //Collective
+        Collective\Html\HtmlServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*
@@ -225,6 +228,14 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        "BreedModel" => App\Models\Breed::class,
+        "CatModel" => App\Models\Cat::class,
+        "PackModel" => App\Models\Pack::class,
+        "QuestModel" => App\Models\Quest::class,
+        "RarityModel" => App\Models\Rarity::class,
+        "UserModel" => App\Models\User::class,
 
     ],
 

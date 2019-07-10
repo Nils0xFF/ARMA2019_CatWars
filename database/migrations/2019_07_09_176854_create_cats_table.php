@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePacksTable extends Migration
+class CreateCatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,18 @@ class CreatePacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('packs', function (Blueprint $table) {
+        Schema::create('cats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('name');
-            $table->integer('price');
-        });
+            $table->integer('current_hp')->unsigned();
 
-        Schema::create('pack_breed',function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('pack_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->bigInteger('breed_id')->unsigned();
             $table->foreign('breed_id')->references('id')->on('breeds')->onDelete('cascade');
-            $table->foreign('pack_id')->references('id')->on('packs')->onDelete('cascade');
         });
+
     }
 
     /**
@@ -36,6 +34,6 @@ class CreatePacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packs');
+        Schema::dropIfExists('cats');
     }
 }

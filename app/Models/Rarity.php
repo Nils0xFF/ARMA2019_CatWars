@@ -3,14 +3,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pack extends Model
+class Rarity extends Model
 {
     public static $rules = [
         "name" => "required|min:2",
-        "price" => "required|int|gte:0",
+        "chance" => "required|integer|lte:100"
     ];
 
     function breeds(){
-        return $this->hasMany('App\Models\Breed');
+        return $this->hasMany('App\Models\Breeds');
     }
 }

@@ -5,10 +5,16 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
+
+    public static $rules = [
+        "name" => "required|min:2",
+        "coins" => "int|gte:0",
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +42,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function cats(){
+        return $this->hasMany('App\Model\Cat');
+    }
+
+    function quests(){
+        return $this->belongsToMany('App\Model\Quest');
+    }
+
 }
