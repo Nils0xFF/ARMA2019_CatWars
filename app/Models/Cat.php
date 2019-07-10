@@ -7,7 +7,8 @@ class Cat extends Model
 {
     public static $rules = [
         "user_id" => "required",
-        "breed_id" => "required"
+        "breed_id" => "required",
+        "current_hp" => "required|gte:0"
     ];
 
     function breed(){
