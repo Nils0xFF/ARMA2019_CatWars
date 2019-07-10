@@ -22,7 +22,7 @@ class CreateQuestsTable extends Migration
             $table->integer('reward')->unsinged();
         });
 
-        Schema::create('user_quest', function (Blueprint $table) {
+        Schema::create('quest_user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
 
