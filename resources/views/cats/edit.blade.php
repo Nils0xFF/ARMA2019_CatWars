@@ -5,7 +5,7 @@
 <h1>Edit Cat</h1>
 
 
-{{Form::model($cat, ['url' => 'cats/edit/'.$cat->id])}}
+{{Form::model($cat, ['url' => 'admin/cats/edit/'.$cat->id])}}
 <div class="form-group">
     {{Form::label('current_hp', 'Current HP')}}
     {{Form::number('current_hp', null, ['class'=>'form-control'])}}

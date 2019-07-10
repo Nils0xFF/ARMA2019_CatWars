@@ -4,7 +4,7 @@
 
 <h1>Add Quest</h1>
 
-{{Form::open(['url' => 'quests/new'])}}
+{{Form::open(['url' => 'admin/quests/new'])}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}
     {{Form::text('name', null, ['class'=>'form-control'])}}

@@ -4,7 +4,7 @@
 
 <h1>Add Breed</h1>
 
-{{Form::open(['url' => 'breeds/new'])}}
+{{Form::open(['url' => 'admin/breeds/new'])}}
 {{-- {{Form::model($breed, ['url' => 'breeds/edit/'.$breed->id])}} --}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}

@@ -28,17 +28,17 @@
             <td>{{$breed->claw_sharpness}}</td>
             <td>{{$breed->rarity->name}}</td>
             <td>
-                <a type="button" class="btn btn-warning" href="{{ url('breeds/edit/'.$breed->id) }}" >Edit</a>
-                <a type="button" class="btn btn-danger" href="{{ url('breeds/delete/'.$breed->id) }}" >Delete</a>
+                <a type="button" class="btn btn-warning" href="{{ url('admin/breeds/edit/'.$breed->id) }}" >Edit</a>
+                <a type="button" class="btn btn-danger" href="{{ url('admin/breeds/delete/'.$breed->id) }}" >Delete</a>
             </td>
             </tr>
             @endforeach
 
         </tbody>
     </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add First Breed</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Breed</a>
 @endif
 
 @endsection

@@ -18,10 +18,10 @@
         <tr>
         <th scope="row">{{$user->id}}</th>
         <td>{{$user->name}}</td>
-        <td>{{$user->mail}}</td>
+        <td>{{$user->email}}</td>
         <td>{{$user->coins}}</td>
         <td>
-            <a type="button" class="btn btn-warning" href="{{ url('users/edit/'.$user->id) }}" >Edit</a>
+            <a type="button" class="btn btn-warning" href="{{ url('admin/users/edit/'.$user->id) }}" >Edit</a>
         </td>
         </tr>
         @endforeach

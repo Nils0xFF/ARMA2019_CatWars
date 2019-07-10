@@ -5,7 +5,7 @@
 <h1>Edit Quest</h1>
 
 
-{{Form::model($quest, ['url' => 'quests/edit/'.$quest->id])}}
+{{Form::model($quest, ['url' => 'admin/quests/edit/'.$quest->id])}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}
     {{Form::text('name', null, ['class'=>'form-control'])}}

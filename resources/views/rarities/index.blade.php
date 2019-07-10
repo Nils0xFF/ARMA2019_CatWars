@@ -19,15 +19,15 @@
         <td>{{$rarity->name}}</td>
         <td>{{$rarity->chance}}</td>
         <td>
-            <a type="button" class="btn btn-warning" href="{{ url('rarities/edit/'.$rarity->id) }}" >Edit</a>
-            <a type="button" class="btn btn-danger" href="{{ url('rarities/delete/'.$rarity->id) }}" >Delete</a>
+            <a type="button" class="btn btn-warning" href="{{ url('admin/rarities/edit/'.$rarity->id) }}" >Edit</a>
+            <a type="button" class="btn btn-danger" href="{{ url('admin/rarities/delete/'.$rarity->id) }}" >Delete</a>
         </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add First Rarity</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Rarity</a>
 @endif
 @endsection

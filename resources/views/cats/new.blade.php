@@ -4,7 +4,7 @@
 
 <h1>Add Cat</h1>
 
-{{Form::open(['url' => 'cats/new'])}}
+{{Form::open(['url' => 'admin/cats/new'])}}
 <div class="form-group">
     {{Form::label('user_id', 'User')}}
     {{Form::select('user_id', UserModel::all()->pluck('name', 'id'), null,  ['class'=>'form-control'])}}

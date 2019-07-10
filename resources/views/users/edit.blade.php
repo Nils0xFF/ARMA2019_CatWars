@@ -5,7 +5,7 @@
 <h1>Edit User</h1>
 
 
-{{Form::model($user, ['url' => 'users/edit/'.$user->id])}}
+{{Form::model($user, ['url' => 'admin/users/edit/'.$user->id])}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}
     {{Form::text('name', null, ['class'=>'form-control'])}}

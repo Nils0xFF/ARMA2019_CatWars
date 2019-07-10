@@ -5,7 +5,7 @@
 <h1>Edit Pack</h1>
 
 
-{{Form::model($pack, ['url' => 'packs/edit/'.$pack->id])}}
+{{Form::model($pack, ['url' => 'admin/packs/edit/'.$pack->id])}}
 <div class="form-group">
     {{Form::label('name', 'Current HP')}}
     {{Form::text('name', null, ['class'=>'form-control'])}}

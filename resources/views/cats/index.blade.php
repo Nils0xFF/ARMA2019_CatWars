@@ -22,16 +22,16 @@
         <td>{{$cat->breed->name}}</td>
         <td>{{$cat->user->name}}</td>
         <td>
-            <a type="button" class="btn btn-warning" href="{{ url('cats/edit/'.$cat->id) }}" >Edit</a>
-            <a type="button" class="btn btn-danger" href="{{ url('cats/delete/'.$cat->id) }}" >Delete</a>
+            <a type="button" class="btn btn-warning" href="{{ url('admin/cats/edit/'.$cat->id) }}" >Edit</a>
+            <a type="button" class="btn btn-danger" href="{{ url('admin/cats/delete/'.$cat->id) }}" >Delete</a>
         </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add First Cat</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Cat</a>
 @endif
 
 @endsection

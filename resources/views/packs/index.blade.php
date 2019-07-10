@@ -20,16 +20,16 @@
             <td>{{$pack->name}}</td>
             <td>{{$pack->price}}</td>
             <td>
-                <a type="button" class="btn btn-warning" href="{{ url('packs/edit/'.$pack->id) }}" >Edit</a>
-                <a type="button" class="btn btn-danger" href="{{ url('packs/delete/'.$pack->id) }}" >Delete</a>
+                <a type="button" class="btn btn-warning" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
+                <a type="button" class="btn btn-danger" href="{{ url('admin/packs/delete/'.$pack->id) }}" >Delete</a>
             </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('breeds/new') }}" >Add First Pack</a>
+<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Pack</a>
 @endif
 
 

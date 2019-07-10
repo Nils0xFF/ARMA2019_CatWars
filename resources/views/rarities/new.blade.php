@@ -4,7 +4,7 @@
 
 <h1>Add Rarity</h1>
 
-{{Form::open(['url' => 'rarities/new'])}}
+{{Form::open(['url' => 'admin/rarities/new'])}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}
     {{Form::text('name', null, ['class'=>'form-control'])}}

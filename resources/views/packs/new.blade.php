@@ -4,7 +4,7 @@
 
 <h1>Add Pack</h1>
 
-{{Form::open(['url' => 'packs/new'])}}
+{{Form::open(['url' => 'admin/packs/new'])}}
 <div class="form-group">
     {{Form::label('name', 'Current HP')}}
     {{Form::text('name', null, ['class'=>'form-control'])}}
