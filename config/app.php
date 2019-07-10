@@ -230,6 +230,12 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        "BreedModel" => App\Models\Breed::class,
+        "CatModel" => App\Models\Cat::class,
+        "PackModel" => App\Models\Pack::class,
+        "QuestModel" => App\Models\Quest::class,
+        "RarityModel" => App\Models\Rarity::class,
+        "UserModel" => App\Models\User::class,
 
     ],
 

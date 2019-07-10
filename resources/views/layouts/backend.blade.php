@@ -18,6 +18,9 @@
       <a class="nav-item nav-link" href="{{ url('packs') }}">Packs</a>
       <a class="nav-item nav-link" href="{{ url('cats') }}">Cats</a>
       <a class="nav-item nav-link" href="{{ url('breeds') }}">Breeds</a>
+      <a class="nav-item nav-link" href="{{ url('quests') }}">Quests</a>
+      <a class="nav-item nav-link" href="{{ url('users') }}">Users</a>
+      <a class="nav-item nav-link" href="{{ url('rarities') }}">Rarities</a>
       </div>
 
     </div>

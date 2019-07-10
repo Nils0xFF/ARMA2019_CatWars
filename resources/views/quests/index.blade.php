@@ -7,15 +7,16 @@
         <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Chance</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Reward</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($rarities as $rarity)
+        @foreach ($quests as $quest)
         <tr>
         <th scope="row">{{$rarity->id}}</th>
-        <td>{{$rarity->name}}</td>
-        <td>{{$rarity->max_hp}}</td>
+        <td>{{$rarity->duration}}</td>
+        <td>{{$rarity->reward}}</td>
         </tr>
         @endforeach
     </tbody>

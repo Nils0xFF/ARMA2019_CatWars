@@ -7,7 +7,7 @@ class QuestController extends Controller
 {
     public function getIndex()
     {
-        return view('quest.index')->with('quest',Quest::all());
+        return view('quests.index')->with('quests',Quest::all());
     }
 
     public function create()
