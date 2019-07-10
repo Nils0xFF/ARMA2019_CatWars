@@ -15,6 +15,8 @@ Route::get('/', 'PackController@getIndex');
 
 Route::get('breeds', 'BreedController@getIndex');
 Route::get('breeds/index', 'BreedController@getIndex');
+Route::get('breeds/edit/{id?}', 'BreedController@getEdit');
+Route::get('breeds/delete/{id?}', 'BreedController@postDelete');
 
 Route::get('cats', 'CatController@getIndex');
 Route::get('cats/index', 'CatController@getIndex');
