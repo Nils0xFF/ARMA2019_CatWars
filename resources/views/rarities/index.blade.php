@@ -15,10 +15,15 @@
         <tr>
         <th scope="row">{{$rarity->id}}</th>
         <td>{{$rarity->name}}</td>
-        <td>{{$rarity->max_hp}}</td>
+        <td>{{$rarity->chance}}</td>
+        <td>
+            <a type="button" class="btn btn-warning" href="{{ url('rarities/edit/'.$rarity->id) }}" >Edit</a>
+            <a type="button" class="btn btn-danger" href="{{ url('rarities/delete/'.$rarity->id) }}" >Delete</a>
+        </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+<a type="button" class="btn btn-primary" href="{{ url('rarities/new') }}" >Add</a>
 
 @endsection

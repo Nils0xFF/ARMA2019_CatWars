@@ -25,14 +25,16 @@
         <td>{{$breed->cuteness}}</td>
         <td>{{$breed->fur_thickness}}</td>
         <td>{{$breed->claw_sharpness}}</td>
-        <td>{{$breed->rareness}}</td>
+        <td>{{$breed->rarity->name}}</td>
         <td>
             <a type="button" class="btn btn-warning" href="{{ url('breeds/edit/'.$breed->id) }}" >Edit</a>
             <a type="button" class="btn btn-danger" href="{{ url('breeds/delete/'.$breed->id) }}" >Delete</a>
         </td>
         </tr>
         @endforeach
+
     </tbody>
 </table>
+<a type="button" class="btn btn-primary" href="{{ url('breeds/new') }}" >Add</a>
 
 @endsection
