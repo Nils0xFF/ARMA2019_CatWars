@@ -49,11 +49,11 @@ class BreedController extends Controller
             });
             $image->save(public_path('img/breeds/'. $breed->id.'.'.$file->getClientOriginalExtension()));
 
-            return redirect('admin/breeds');
+            return back();
         }
         else
         {
-            return redirect('admin/breeds/new')->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
             // edit: return redirect('admin/breeds/edit/'.$breed->id)->with('breed', $breed)->withErrors($validator)->withInput();
         }
 
@@ -67,7 +67,7 @@ class BreedController extends Controller
         {
             return view('backend.breeds.detail')->with('breed', $breed);
         }
-        return redirect('admin/breeds');
+        return back();
     }
     
     public function getEdit($id = null)
@@ -77,7 +77,7 @@ class BreedController extends Controller
         {
             return view('backend.breeds.edit')->with('breed', $breed);
         }
-        return redirect('admin/breeds');
+        return back();
     }
     
     public function postEdit($id = null)
@@ -108,7 +108,7 @@ class BreedController extends Controller
                 }
 
     
-                return redirect('admin/breeds');
+                return back();
             }
             else
             {
@@ -126,6 +126,6 @@ class BreedController extends Controller
             $breed->delete();
             File::delete('img/breeds/'.$id.'.png');
         }
-        return redirect('admin/breeds');
+        return back();
     }
 }

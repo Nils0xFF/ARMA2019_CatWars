@@ -14,7 +14,7 @@ class InitController extends Controller
         $role = Role::create(['name' => 'admin']);
         $role = Role::create(['name' => 'user']);
 
-        return redirect('home');
+        return back();
     }
 
     public function makeMeAdmin()
@@ -23,7 +23,7 @@ class InitController extends Controller
             Auth::user()->assignRole('admin');
         }
 
-        return redirect('home');
+        return back();
     }
 
 }

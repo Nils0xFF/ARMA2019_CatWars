@@ -2,7 +2,7 @@
 <div class="card-header">
     {{$cat->breed->name}}
   </div>
-  <img src="{{url($cat->breed->imagePath())}}" class="card-img-top" alt="" style="height:200px; width:100%; object-fit:cover;">
+  <img src="{{url($cat->breed->imagePath())}}" class="card-img-top mx-auto mt-3" alt="" style="height:200px; width:200px; max-width:100%; object-fit:cover;">
   <div class="card-body">
     <ul class="list-group list-group-flush">
         <li class="list-group-item">

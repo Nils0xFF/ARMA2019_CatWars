@@ -16,7 +16,7 @@
 </div>
 <div class="form-group">
     {{Form::label('description', 'Description')}}
-    {{Form::text('description', null, ['class'=>'form-control'])}}
+    {{Form::textarea('description', null, ['class'=>'form-control'])}}
     @if ($errors->has('description'))
         <span class="help-block">
             <strong>{{ $errors->first('description')}}</strong>
