@@ -10,7 +10,8 @@ class UserController extends Controller
 {
     public function getIndex()
     {
-        return view('backend.users.index')->with('users',User::all());
+        $users = User::paginate(8);
+        return view('backend.users.index')->with('users',$users);
     }
     
     public function getDetail($id = null)
@@ -51,7 +52,7 @@ class UserController extends Controller
                 return redirect('admin/users/edit/'.$id)->withErrors($validator)->withInput()->with('user',$user);
             }
         }
-        return redirect('admin/users');
+        return redirect('admin/users/detail/'.$id);
     }
     
     public function postDelete($id = null)

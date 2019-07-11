@@ -37,6 +37,7 @@
 
         </tbody>
     </table>
+    {{ $breeds->links() }}
 <a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add</a>
 @else 
 <a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/breeds/new') }}" >Add First Breed</a>

@@ -2,32 +2,39 @@
 
 @section('content')
 
-<h3>Pack</h3>
-<h1>{{$pack->name}}</h1>
-<div class="content">
-    <table>
-        <tbody>
-            <tr>
-                <th scope="row">ID:</th>
-                <td>{{$pack->id}}</td>
-            </tr>
-            <tr>
-                <th scope="row">created at:</th>
-                <td>{{$pack->created_at}}</td>
-            </tr>
-            <tr>
-                <th scope="row">updated at:</th>
-                <td>{{$pack->updated_at}}</td>
-            </tr>
-            <tr>
-                <th scope="row">price:</th>
-                <td>{{$pack->price}}</td>
-            </tr>
-            <tr>
-                <th scope="row">breeds:</th>
-                <td>
-                    <table>
-                        <tbody>
+<br>
+<div class="jumbotron">
+
+    <h3>Pack</h3>
+    <h1>{{$pack->name}}</h1>
+
+    <hr class="my-4">
+
+    <div id="content">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">ID:</th>
+                    <td>{{$pack->id}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">created at:</th>
+                    <td>{{$pack->created_at}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">updated at:</th>
+                    <td>{{$pack->updated_at}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">price:</th>
+                    <td>{{$pack->price}}</td>
+                </tr>
+                <tr>
+                    @if($pack->breeds->count() >0)
+                    <th scope="row">Breeds:</th>
+                    <td>
+                        <table class="table">
+                            <tbody>
                                 @foreach ($pack->breeds as $breed)
                                 <tr>
                                 <td>{{$breed->name}}</td>
@@ -40,26 +47,39 @@
                     
                             </tbody>
                         </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    @if($selectableBreeds->count() > 0)
-    {{Form::open(['url' => 'admin/packs/addBreed/'.$pack->id])}}
-    <div class="form-group">
-        {{Form::label('breed', 'Breed')}}
-        {{Form::select('breed_id', $selectableBreeds, null,  ['class'=>'form-control'])}}
-        @if ($errors->has('breed_id'))
-            <span class="help-block">
-                <strong>{{ $errors->first('breed_id')}}</strong>
-            </span>
+                    </td>
+                    @else
+                    <th scope="row">no Breeds</th>
+                    @endif
+                </tr>
+            </tbody>
+        </table><br><br>
+        @if($selectableBreeds->count() > 0)
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    {{Form::open(['url' => 'admin/packs/addBreed/'.$pack->id])}}
+                    <div class="form-group">
+                        {{-- {{Form::label('breed', 'Breed')}} --}}
+                        {{Form::select('breed_id', $selectableBreeds, null,  ['class'=>'form-control'])}}
+                        @if ($errors->has('breed_id'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('breed_id')}}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        {{Form::submit('Add Breed', ['class'=>'btn btn-primary'])}}
+                    </div>
+                </div>
+            </div>
+        </div>
         @endif
-    </div>
-    <div class="form-group">
-        {{Form::submit('Add', ['class'=>'btn btn-primary'])}}
-    </div>
-    @endif
+        <br>
+        <a type="button" class="btn btn-warning btn-lg btn-block" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
 
-</div>
-
+    </div><!--content-->
+</div><!--jumbotron-->
 @endsection

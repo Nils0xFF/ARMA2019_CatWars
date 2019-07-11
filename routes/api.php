@@ -19,5 +19,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('breeds', 'Api\BreedApiController@index');
+
+    //Breeds
+    Route::apiResources([
+        "breeds" => "Api\BreedApiController",
+        "cats" => "Api\CatApiController",
+        "packs" => "Api\PackApiController",
+        "quests" => "Api\QuestApiController",
+        "rarities" => "Api\RarityApiController",
+        "users" => "Api\UserApiController",
+    ]);
+
+
 });

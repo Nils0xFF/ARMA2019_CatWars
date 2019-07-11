@@ -6,12 +6,14 @@ use App\Models\Breed;
 use Validator;
 use Request;
 use Image;
+use File;
+
 
 class BreedController extends Controller
 {
     public function getIndex()
     {
-        $breeds = Breed::orderBy('max_hp','desc')->get();
+        $breeds = Breed::orderBy('max_hp','desc')->orderBy('name','asc')->orderBy('created_at','asc')->paginate(8);
         return view('backend.breeds.index')->with('breeds',$breeds);
     }
 
@@ -60,9 +62,10 @@ class BreedController extends Controller
     public function getDetail($id = null)
     {
         $breed = Breed::find($id);
+        $path = url('/img/breeds/'.$id.'.png');
         if ($breed)
         {
-            return view('backend.breeds.detail')->with('breed', $breed);
+            return view('backend.breeds.detail')->with('breed', $breed)->with('path',$path);
         }
         return redirect('admin/breeds');
     }
@@ -100,7 +103,7 @@ class BreedController extends Controller
                 return redirect('admin/breeds/edit/'.$id)->withErrors($validator)->withInput()->with('breed',$breed);
             }
         }
-        return redirect('admin/breeds');
+        return redirect('admin/breeds/detail/'.$id);
     }
     
     public function postDelete($id = null)
@@ -109,6 +112,7 @@ class BreedController extends Controller
         if ($breed)
         {
             $breed->delete();
+            File::delete('img/breeds/'.$id.'.png');
         }
         return redirect('admin/breeds');
     }
