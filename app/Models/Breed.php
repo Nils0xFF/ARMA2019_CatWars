@@ -11,7 +11,8 @@ class Breed extends Model
         "cuteness" => "required|int|gt:0",
         "fur_thickness" => "required|int|gt:0",
         "claw_sharpness" => "required|int|gt:0",
-        "rarity_id" => "required"
+        "rarity_id" => "required",
+        "breedImage" => "required"
     ];
 
     function rarity(){
@@ -23,6 +24,6 @@ class Breed extends Model
     }
 
     function packs(){
-        return $this->hasMany('App\Models\Packs');
+        return $this->belongsToMany('App\Models\Packs');
     }
 }
