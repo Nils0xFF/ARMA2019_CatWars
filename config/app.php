@@ -178,6 +178,9 @@ return [
         //Collective
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
+
+
     ],
 
     /*
@@ -236,7 +239,7 @@ return [
         "QuestModel" => App\Models\Quest::class,
         "RarityModel" => App\Models\Rarity::class,
         "UserModel" => App\Models\User::class,
-
+        "Image" => Intervention\Image\Facades\Image::class
     ],
 
 ];
