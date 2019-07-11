@@ -45,11 +45,11 @@ class User extends Authenticatable
     ];
 
     function cats(){
-        return $this->hasMany('App\Model\Cat');
+        return $this->hasMany('App\Models\Cat');
     }
 
     function quests(){
-        return $this->belongsToMany('App\Model\Quest');
+        return $this->belongsToMany('App\Models\Quest')->withTimestamps();
     }
 
 }

@@ -12,9 +12,10 @@
   </head>
   <body>
   
-    <nav class="navbar navbar-light bg-light navbar-expand-lg">
-    
+    <nav class="navbar navbar-light bg-light navbar-expand">
+    <div class="container">
     <a class="navbar-brand mb-0 h1" href ="{{url('home')}}" >Battle Cats</a>
+ 
       <div class="navbar-nav">
       @guest
         <li class="nav-item">
@@ -46,13 +47,13 @@
         </li>
       @endguest
       </div>
-
+      </div>
 
 
 
     </div>
     </nav>
-    <div class="container">
+    <div class="container py-5">
         @yield('content')
     </div>
 

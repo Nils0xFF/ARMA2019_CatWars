@@ -11,11 +11,32 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('init/roles', 'Backend\InitController@createRoles');
-Route::get('init/admin', 'Backend\InitController@makeMeAdmin');
+
+
+
+Route::group(['middleware' => ['auth']], function() {
+
+
+    Route::get('/', 'Frontend\CollectionController@getIndex');
+    Route::get('/home', 'Frontend\CollectionController@getIndex');
+
+    Route::get('/quests', 'Frontend\QuestController@getIndex');
+    Route::get('/quests/start/{id?}', 'Frontend\QuestController@startQuest');
+    Route::get('/quests/complete/{id?}', 'Frontend\QuestController@completeQuest');
+
+    Route::get('/packs', 'Frontend\PackController@getIndex');
+    Route::get('/packs/open/{id?}', 'Frontend\PackController@getOpen');
+
+    Route::get('/collection', 'Frontend\CollectionController@getIndex');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
+
+
+    Route::get('init/roles', 'Backend\InitController@createRoles');
+    Route::get('init/admin', 'Backend\InitController@makeMeAdmin');
+});
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function() {
