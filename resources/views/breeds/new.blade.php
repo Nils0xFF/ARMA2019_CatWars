@@ -4,7 +4,7 @@
 
 <h1>Add Breed</h1>
 
-{{Form::open(['url' => 'admin/breeds/new'])}}
+{{Form::open(['url' => 'admin/breeds/new', 'files' => true])}}
 {{-- {{Form::model($breed, ['url' => 'breeds/edit/'.$breed->id])}} --}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}
@@ -57,6 +57,15 @@
     @if ($errors->has('rarity_id'))
         <span class="help-block">
             <strong>{{ $errors->first('rarity_id')}}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group">
+    {{Form::label('Image', 'Bild')}}
+    {{Form::file('breedImage')}}
+    @if ($errors->has('breedImage'))
+        <span class="help-block">
+            <strong>{{ $errors->first('breedImage')}}</strong>
         </span>
     @endif
 </div>
