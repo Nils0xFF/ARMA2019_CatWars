@@ -97,11 +97,24 @@ class PackController extends Controller
     
         $pack = Pack::find($id);
         if($pack){
-            $breed = Request::input('breed_id');
-            if(!in_array($pack->breeds->pluck('id'),$breed)){
-                $pack->breeds()->attach($breed);
+            $breed_id = Request::input('breed_id');
+            if(!$pack->breeds->pluck('id')->contains($breed_id)){
+                $pack->breeds()->attach($breed_id);
             }
         } 
         return redirect('admin/packs/detail/'.$id);
+    }
+
+    public function getRemoveBreed($pack_id = null, $breed_id = null)
+    {
+        if($breed_id){
+            $pack = Pack::find($pack_id);
+            if($pack){
+                if($pack->breeds->pluck('id')->contains($breed_id)){
+                    $pack->breeds()->detach($breed_id);
+                }
+            }
+        }
+        return redirect('admin/packs/detail/'.$pack_id);
     }
 }
