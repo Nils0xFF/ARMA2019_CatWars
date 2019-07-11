@@ -89,4 +89,13 @@ class PackController extends Controller
         }
         return redirect('admin/packs');
     }
+
+    public function postAddBreed($id = null){
+    
+        $pack = Pack::find($id);
+        if($pack){
+            $breed = Request::input('breed_id');
+            $pack->breeds()->attach($breed);
+        } 
+    }
 }

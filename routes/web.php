@@ -83,6 +83,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
     Route::get('packs/delete/{id?}', 'Backend\PackController@postDelete');
 
+    Route::post('packs/addBreed/{id?}', 'Backend\PackController@postAddBreed');
+
 
     //Users
     Route::get('users', 'Backend\UserController@getIndex');
