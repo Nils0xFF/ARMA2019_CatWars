@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
 use App\Models\Pack;
+use App\Models\Breed;
 use Validator;
 use Request;
 
@@ -42,9 +43,11 @@ class PackController extends Controller
     public function getDetail($id = null)
     {
         $pack = Pack::find($id);
+        $pack_breedIDs = $pack->breeds->pluck('id');
+        $selectableBreeds = Breed::whereNotIn('id', $pack_breedIDs)->pluck('name', 'id');
         if ($pack)
         {
-            return view('packs.detail')->with('pack', $pack);
+            return view('packs.detail')->with('pack', $pack)->with('selectableBreeds', $selectableBreeds);
         }
         return redirect('admin/packs');
     }
@@ -95,7 +98,10 @@ class PackController extends Controller
         $pack = Pack::find($id);
         if($pack){
             $breed = Request::input('breed_id');
-            $pack->breeds()->attach($breed);
+            if(!in_array($pack->breeds->pluck('id'),$breed)){
+                $pack->breeds()->attach($breed);
+            }
         } 
+        return redirect('admin/packs/detail/'.$id);
     }
 }

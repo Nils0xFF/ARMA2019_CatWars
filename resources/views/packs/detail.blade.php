@@ -26,17 +26,30 @@
             <tr>
                 <th scope="row">breeds:</th>
                 <td>
-                    @foreach($pack->breeds() as $breed)
-                        {{$breed->name}}
-                    @endforeach
+                    <table>
+                        <tbody>
+                                @foreach ($pack->breeds as $breed)
+                                <tr>
+                                <td>{{$breed->name}}</td>
+                                <td>
+                                    <a type="button" class="btn btn-secondary" href="{{ url('admin/breeds/detail/'.$breed->id) }}" >Detail</a>
+                                    <a type="button" class="btn btn-warning" href="{{ url('admin/breeds/edit/'.$breed->id) }}" >Edit</a>
+                                    <a type="button" class="btn btn-danger" href="{{ url('admin/breeds/delete/'.$breed->id) }}" >Delete</a>
+                                </td>
+                                </tr>
+                                @endforeach
+                    
+                            </tbody>
+                        </table>
                 </td>
             </tr>
         </tbody>
     </table>
+    @if($selectableBreeds->count() > 0)
     {{Form::open(['url' => 'admin/packs/addBreed/'.$pack->id])}}
     <div class="form-group">
         {{Form::label('breed', 'Breed')}}
-        {{Form::select('breed_id', BreedModel::all()->pluck('name', 'id'), null,  ['class'=>'form-control'])}}
+        {{Form::select('breed_id', $selectableBreeds, null,  ['class'=>'form-control'])}}
         @if ($errors->has('breed_id'))
             <span class="help-block">
                 <strong>{{ $errors->first('breed_id')}}</strong>
@@ -46,6 +59,7 @@
     <div class="form-group">
         {{Form::submit('Add', ['class'=>'btn btn-primary'])}}
     </div>
+    @endif
 
 </div>
 
