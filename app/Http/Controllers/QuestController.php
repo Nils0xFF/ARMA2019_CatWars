@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Quest;
 use Validator;
 use Request;
-use App\Models\Quest;
 
 class QuestController extends Controller
 {
@@ -29,11 +29,11 @@ class QuestController extends Controller
             $quest->duration = Request::input('duration');
             $quest->reward = Request::input('reward');
             $quest->save(); 
-            return redirect('quests');
+            return redirect('admin/quests');
         }
         else
         {
-            return redirect('quests/new')->withErrors($validator)->withInput();
+            return redirect('admin/quests/new')->withErrors($validator)->withInput();
             // edit: return redirect('quests/edit/'.$quest->id)->with('quest', $quest)->withErrors($validator)->withInput();
         }
 
@@ -44,9 +44,9 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         if ($quest)
         {
-            return view('quests.show')->with('quest', $quest);
+            return view('quests.detail')->with('quest', $quest);
         }
-        return redirect('quests');
+        return redirect('admin/quests');
     }
     
     public function getEdit($id = null)
@@ -56,7 +56,7 @@ class QuestController extends Controller
         {
             return view('quests.edit')->with('quest', $quest);
         }
-        return redirect('quests');
+        return redirect('admin/quests');
     }
     
     public function postEdit($id = null)
@@ -64,13 +64,22 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         if ($quest)
         {
-            $quest->name = Request::input('name');
-            $quest->description = Request::input('description');
-            $quest->duration = Request::input('duration');
-            $quest->reward = Request::input('reward');
-            $quest->save();
+            $validator = Validator::make(Request::all(), Quest::$edit_rules);
+
+            if ($validator->passes())
+            {
+                $quest->name = Request::input('name');
+                $quest->description = Request::input('description');
+                $quest->duration = Request::input('duration');
+                $quest->reward = Request::input('reward');
+                $quest->save();
+            }
+            else
+            {
+                return redirect('admin/quests/edit/'.$id)->withErrors($validator)->withInput()->with('quest',$quest);
+            }
         }
-        return redirect('quests');
+        return redirect('admin/quests');
     }
     
     public function postDelete($id = null)
@@ -80,6 +89,6 @@ class QuestController extends Controller
         {
             $quest->delete();
         }
-        return redirect('quests');
+        return redirect('admin/quests');
     }
 }

@@ -41,8 +41,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('breeds', 'Backend/BreedController@getIndex');
     Route::get('breeds/index', 'Backend/BreedController@getIndex');
 
+<<<<<<< HEAD
     Route::get('breeds/new', 'Backend/BreedController@getNew');
     Route::post('breeds/new', 'Backend/BreedController@postNew');
+=======
+    Route::get('breeds/detail/{id?}', 'BreedController@getDetail');
+
+    Route::get('breeds/new', 'BreedController@getNew');
+    Route::post('breeds/new', 'BreedController@postNew');
+>>>>>>> 06fe0265ce85e4fe3b7d99495a5f651ca7dd5945
 
     Route::get('breeds/edit/{id?}', 'Backend/BreedController@getEdit');
     Route::post('breeds/edit/{id?}', 'Backend/BreedController@postEdit');

@@ -11,6 +11,11 @@ class User extends Authenticatable
 {
     use Notifiable, HasRoles;
 
+    public static $rules = [
+        "name" => "required|min:2",
+        "coins" => "int|gte:0",
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

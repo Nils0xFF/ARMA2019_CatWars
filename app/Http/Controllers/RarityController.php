@@ -1,14 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 
-use Validator;
 use App\Models\Rarity;
+use Validator;
+use Request;
 
 class RarityController extends Controller
 {
     public function getIndex()
     {
-        return view('rarities.index')->with('rarities',Rarity::all());
+        $rarities = Rarity::orderBy('chance','desc')->get();
+        return view('rarities.index')->with('rarities',$rarities);
     }
 
     public function getNew()
@@ -26,11 +28,11 @@ class RarityController extends Controller
             $rarity->name = Request::input('name');
             $rarity->chance = Request::input('chance');
             $rarity->save(); 
-            return redirect('rarities');
+            return redirect('admin/rarities');
         }
         else
         {
-            return redirect('rarities/new')->withErrors($validator)->withInput();
+            return redirect('admin/rarities/new')->withErrors($validator)->withInput();
             // edit: return redirect('rarities/edit/'.$rarity->id)->with('rarity', $rarity)->withErrors($validator)->withInput();
         }
 
@@ -41,9 +43,9 @@ class RarityController extends Controller
         $rarity = Rarity::find($id);
         if ($rarity)
         {
-            return view('rarities.show')->with('rarity', $rarity);
+            return view('rarities.detail')->with('rarity', $rarity);
         }
-        return redirect('rarities');
+        return redirect('admin/rarities');
     }
     
     public function getEdit($id = null)
@@ -53,7 +55,7 @@ class RarityController extends Controller
         {
             return view('rarities.edit')->with('rarity', $rarity);
         }
-        return redirect('rarities');
+        return redirect('admin/rarities');
     }
     
     public function postEdit($id = null)
@@ -61,11 +63,20 @@ class RarityController extends Controller
         $rarity = Rarity::find($id);
         if ($rarity)
         {
-            $rarity->name = Request::input('name');
-            $rarity->chance = Request::input('chance');
-            $rarity->save(); 
+            $validator = Validator::make(Request::all(), Rarity::$rules);
+
+            if ($validator->passes())
+            {
+                $rarity->name = Request::input('name');
+                $rarity->chance = Request::input('chance');
+                $rarity->save(); 
+            }
+            else
+            {
+                return redirect('admin/rarities/edit/'.$id)->withErrors($validator)->withInput()->with('rarity',$rarity);
+            }
         }
-        return redirect('rarities');
+        return redirect('admin/rarities');
     }
     
     public function postDelete($id = null)
@@ -75,6 +86,6 @@ class RarityController extends Controller
         {
             $rarity->delete();
         }
-        return redirect('rarities');
+        return redirect('admin/rarities');
     }
 }

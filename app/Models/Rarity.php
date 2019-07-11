@@ -7,7 +7,7 @@ class Rarity extends Model
 {
     public static $rules = [
         "name" => "required|min:2",
-        "chance" => "required|float"
+        "chance" => "required|integer|lte:100"
     ];
 
     function breeds(){

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Validator;
-use Request;
-
 use App\Models\Cat;
 use App\Models\Breed;
+use Validator;
+use Request;
 
 class CatController extends Controller
 {
     public function getIndex()
     {
-        $cats = Cat::all(); //orderBy('current_hp','desc')->get();
+        $cats = Cat::orderBy('user_id','desc')->get();
         return view('cats.index')->with('cats',$cats);
     }
 
@@ -33,12 +32,12 @@ class CatController extends Controller
             $maxHp = (Breed::find($cat->breed_id))->max_hp;
             $cat->current_hp = $maxHp;
             $cat->save(); 
-            return redirect('cats');
+            return redirect('admin/cats');
         }
         else
         {
-            return redirect('cats/new')->withErrors($validator)->withInput();
-            // edit: return redirect('cats/edit/'.$cat->id)->with('cat', $cat)->withErrors($validator)->withInput();
+            return redirect('admin/cats/new')->withErrors($validator)->withInput();
+            // edit: return redirect('admin/cats/edit/'.$cat->id)->with('cat', $cat)->withErrors($validator)->withInput();
         }
 
     }
@@ -48,9 +47,9 @@ class CatController extends Controller
         $cat = Cat::find($id);
         if ($cat)
         {
-            return view('cats.show')->with('cat', $cat);
+            return view('cats.detail')->with('cat', $cat);
         }
-        return redirect('cats');
+        return redirect('admin/cats');
     }
     
     public function getEdit($id = null)
@@ -60,7 +59,7 @@ class CatController extends Controller
         {
             return view('cats.edit')->with('cat', $cat);
         }
-        return redirect('cats');
+        return redirect('admin/cats');
     }
     
     public function postEdit($id = null)
@@ -81,10 +80,10 @@ class CatController extends Controller
             }
             else
             {
-                return redirect('cats/edit/'.$id)->withErrors($validator)->withInput()->with('cat',$cat);
+                return redirect('admin/cats/edit/'.$id)->withErrors($validator)->withInput()->with('cat',$cat);
             }
         }
-        return redirect('cats');
+        return redirect('admin/cats');
     }
     
     public function postDelete($id = null)
@@ -94,6 +93,6 @@ class CatController extends Controller
         {
             $cat->delete();
         }
-        return redirect('cats');
+        return redirect('admin/cats');
     }
 }
