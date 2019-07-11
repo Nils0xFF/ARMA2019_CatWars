@@ -12,6 +12,6 @@ class Quest extends Model
     ];
 
     function users() {
-        return $this->belongsToMany('App\Model\User');
+        return $this->belongsToMany('App\Model\User')->withTimestamps();
     }
 }

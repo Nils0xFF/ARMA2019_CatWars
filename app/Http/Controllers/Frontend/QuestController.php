@@ -7,6 +7,7 @@ use Validator;
 use Request;
 use Image;
 use Auth;
+use DateTime;
 
 class QuestController extends Controller
 {
@@ -22,11 +23,16 @@ class QuestController extends Controller
     }
 
     function completeQuest($id){
+        $quest = Quest::find($id); 
         if(in_array($id, Auth::user()->quests->pluck('id')->toArray())){
-            Auth::user()->quests()->detach(Quest::find($id));
             // chek if user is allowed to complete (time has passed)
-            Auth::user()->coins += Quest::find($id)->reward;
-            Auth::user()->save();
+            $endDate = new DateTime();
+            $endDate->setTimestamp(strtotime(Auth::user()->quests->find($quest->id)->pivot->created_at) + $quest->duration);
+            if(new DateTime() >= $endDate){
+                Auth::user()->quests()->detach($quest);
+                Auth::user()->coins += $quest->reward;
+                Auth::user()->save();
+            } 
         };
         return redirect('quests');
     }

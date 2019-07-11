@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
 
     function quests(){
-        return $this->belongsToMany('App\Models\Quest');
+        return $this->belongsToMany('App\Models\Quest')->withTimestamps();
     }
 
 }
