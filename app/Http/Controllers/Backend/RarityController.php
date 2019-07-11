@@ -10,7 +10,7 @@ class RarityController extends Controller
 {
     public function getIndex()
     {
-        $rarities = Rarity::orderBy('chance','desc')->get();
+        $rarities = Rarity::orderBy('chance','desc')->paginate(8);
         return view('backend.rarities.index')->with('rarities',$rarities);
     }
 
@@ -77,7 +77,7 @@ class RarityController extends Controller
                 return redirect('admin/rarities/edit/'.$id)->withErrors($validator)->withInput()->with('rarity',$rarity);
             }
         }
-        return redirect('admin/rarities');
+        return redirect('admin/rarities/detail/'.$id);
     }
     
     public function postDelete($id = null)

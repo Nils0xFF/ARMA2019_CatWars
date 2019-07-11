@@ -27,6 +27,7 @@
         @endforeach
     </tbody>
 </table>
+{{ $rarities->links() }}
 <a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/rarities/new') }}" >Add</a>
 @else 
 <a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/rarities/new') }}" >Add First Rarity</a>

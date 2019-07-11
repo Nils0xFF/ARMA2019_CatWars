@@ -10,7 +10,8 @@ class QuestController extends Controller
 {
     public function getIndex()
     {
-        return view('backend.quests.index')->with('quests',Quest::all());
+        $quests = Quest::paginate(8);
+        return view('backend.quests.index')->with('quests',$quests);
     }
 
     public function getNew()
@@ -80,7 +81,7 @@ class QuestController extends Controller
                 return redirect('admin/quests/edit/'.$id)->withErrors($validator)->withInput()->with('quest',$quest);
             }
         }
-        return redirect('admin/quests');
+        return redirect('admin/quests/detail/'.$id);
     }
     
     public function postDelete($id = null)

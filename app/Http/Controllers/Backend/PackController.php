@@ -11,7 +11,7 @@ class PackController extends Controller
 {
     public function getIndex()
     {
-        $packs = Pack::orderBy('price','asc')->get();
+        $packs = Pack::orderBy('price','asc')->paginate(8);
         return view('backend.packs.index')->with('packs',$packs);
     }
 
@@ -80,7 +80,7 @@ class PackController extends Controller
                 return redirect('admin/packs/edit/'.$id)->withErrors($validator)->withInput()->with('pack',$pack);
             }
         }
-        return redirect('admin/packs');
+        return redirect('admin/packs/detail/'.$id);
     }
     
     public function postDelete($id = null)

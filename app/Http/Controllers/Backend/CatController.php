@@ -11,7 +11,7 @@ class CatController extends Controller
 {
     public function getIndex()
     {
-        $cats = Cat::orderBy('user_id','desc')->get();
+        $cats = Cat::orderBy('user_id','desc')->paginate(8);
         return view('backend.cats.index')->with('cats',$cats);
     }
 
@@ -83,7 +83,7 @@ class CatController extends Controller
                 return redirect('admin/cats/edit/'.$id)->withErrors($validator)->withInput()->with('cat',$cat);
             }
         }
-        return redirect('admin/cats');
+        return redirect('admin/cats/detail/'.$id);
     }
     
     public function postDelete($id = null)

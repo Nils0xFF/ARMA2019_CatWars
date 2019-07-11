@@ -7,11 +7,12 @@ use Validator;
 use Request;
 use Image;
 
+
 class BreedController extends Controller
 {
     public function getIndex()
     {
-        $breeds = Breed::orderBy('max_hp','desc')->get();
+        $breeds = Breed::orderBy('max_hp','desc')->orderBy('name','asc')->orderBy('created_at','asc')->paginate(8);
         return view('backend.breeds.index')->with('breeds',$breeds);
     }
 
@@ -100,7 +101,7 @@ class BreedController extends Controller
                 return redirect('admin/breeds/edit/'.$id)->withErrors($validator)->withInput()->with('breed',$breed);
             }
         }
-        return redirect('admin/breeds');
+        return redirect('admin/breeds/detail/'.$id);
     }
     
     public function postDelete($id = null)
