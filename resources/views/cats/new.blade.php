@@ -23,15 +23,7 @@
         </span>
     @endif
 </div>
-<div class="form-group">
-    {{Form::label('image', 'User')}}
-    {{Form::file('breed_id', BreedModel::all()->pluck('name', 'id'), null,  ['class'=>'form-control'])}}
-    @if ($errors->has('breed_id'))
-        <span class="help-block">
-            <strong>{{ $errors->first('breed_id')}}</strong>
-        </span>
-    @endif
-</div>
+
 <div class="form-group">
     {{Form::submit('Speichern', ['class'=>'btn btn-primary'])}}
 </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Breed;
 use Validator;
 use Request;
+use Image;
 
 class BreedController extends Controller
 {
@@ -26,7 +27,6 @@ class BreedController extends Controller
         if ($validator->passes())
         {
             $breed = new Breed();
-            $file = Request::file('breedImage');
 
 
             $breed->name = Request::input('name');
@@ -36,8 +36,17 @@ class BreedController extends Controller
             $breed->rarity_id = Request::input('rarity_id');
             $breed->fur_thickness = Request::input('fur_thickness');
             $breed->max_hp = Request::input('max_hp');
-            $file->move(public_path('img/breeds'), $breed->id.'.'.$file->getClientOriginExtension());
             $breed->save();
+
+            // file->move(public_path('img/breeds/'. $breed->id.'.'.$file->getClientOriginalExtension()));
+            
+            $file = Request::file('breedImage');
+            $image = Image::make(Request::file('breedImage')->getRealPath())
+            ->resize(600,600, function($c) {
+                $c->aspectRatio();
+            });
+            $image->save(public_path('img/breeds/'. $breed->id.'.'.$file->getClientOriginalExtension()));
+
             return redirect('admin/breeds');
         }
         else

@@ -11,7 +11,8 @@ class Breed extends Model
         "cuteness" => "required|int|gt:0",
         "fur_thickness" => "required|int|gt:0",
         "claw_sharpness" => "required|int|gt:0",
-        "rarity_id" => "required"
+        "rarity_id" => "required",
+        "breedImage" => "required"
     ];
 
     function rarity(){
