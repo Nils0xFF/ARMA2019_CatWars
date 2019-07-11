@@ -11,12 +11,12 @@ class RarityController extends Controller
     public function getIndex()
     {
         $rarities = Rarity::orderBy('chance','desc')->get();
-        return view('rarities.index')->with('rarities',$rarities);
+        return view('backend.rarities.index')->with('rarities',$rarities);
     }
 
     public function getNew()
     {
-        return view('rarities.new');
+        return view('backend.rarities.new');
     }
 
     public function postNew()
@@ -44,7 +44,7 @@ class RarityController extends Controller
         $rarity = Rarity::find($id);
         if ($rarity)
         {
-            return view('rarities.detail')->with('rarity', $rarity);
+            return view('backend.rarities.detail')->with('rarity', $rarity);
         }
         return redirect('admin/rarities');
     }
@@ -54,7 +54,7 @@ class RarityController extends Controller
         $rarity = Rarity::find($id);
         if ($rarity)
         {
-            return view('rarities.edit')->with('rarity', $rarity);
+            return view('backend.rarities.edit')->with('rarity', $rarity);
         }
         return redirect('admin/rarities');
     }

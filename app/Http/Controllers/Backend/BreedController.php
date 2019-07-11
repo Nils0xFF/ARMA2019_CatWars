@@ -12,12 +12,12 @@ class BreedController extends Controller
     public function getIndex()
     {
         $breeds = Breed::orderBy('max_hp','desc')->get();
-        return view('breeds.index')->with('breeds',$breeds);
+        return view('backend.breeds.index')->with('breeds',$breeds);
     }
 
     public function getNew()
     {
-        return view('breeds.new');
+        return view('backend.breeds.new');
     }
 
     public function postNew()
@@ -62,7 +62,7 @@ class BreedController extends Controller
         $breed = Breed::find($id);
         if ($breed)
         {
-            return view('breeds.detail')->with('breed', $breed);
+            return view('backend.breeds.detail')->with('breed', $breed);
         }
         return redirect('admin/breeds');
     }
@@ -72,7 +72,7 @@ class BreedController extends Controller
         $breed = Breed::find($id);
         if ($breed)
         {
-            return view('breeds.edit')->with('breed', $breed);
+            return view('backend.breeds.edit')->with('breed', $breed);
         }
         return redirect('admin/breeds');
     }

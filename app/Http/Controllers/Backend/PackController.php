@@ -12,12 +12,12 @@ class PackController extends Controller
     public function getIndex()
     {
         $packs = Pack::orderBy('price','asc')->get();
-        return view('packs.index')->with('packs',$packs);
+        return view('backend.packs.index')->with('packs',$packs);
     }
 
     public function getNew()
     {
-        return view('packs.new');
+        return view('backend.packs.new');
     }
 
     public function postNew()
@@ -47,7 +47,7 @@ class PackController extends Controller
         $selectableBreeds = Breed::whereNotIn('id', $pack_breedIDs)->pluck('name', 'id');
         if ($pack)
         {
-            return view('packs.detail')->with('pack', $pack)->with('selectableBreeds', $selectableBreeds);
+            return view('backend.packs.detail')->with('pack', $pack)->with('selectableBreeds', $selectableBreeds);
         }
         return redirect('admin/packs');
     }
@@ -57,7 +57,7 @@ class PackController extends Controller
         $pack = Pack::find($id);
         if ($pack)
         {
-            return view('packs.edit')->with('pack', $pack);
+            return view('backend.packs.edit')->with('pack', $pack);
         }
         return redirect('admin/packs');
     }

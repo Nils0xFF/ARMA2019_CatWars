@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function getIndex()
     {
-        return view('users.index')->with('users',User::all());
+        return view('backend.users.index')->with('users',User::all());
     }
     
     public function getDetail($id = null)
@@ -18,7 +18,7 @@ class UserController extends Controller
         $user = User::find($id);
         if ($user)
         {
-            return view('users.detail')->with('user', $user);
+            return view('backend.users.detail')->with('user', $user);
         }
         return redirect('admin/users');
     }
@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = User::find($id);
         if ($user)
         {
-            return view('users.edit')->with('user', $user);
+            return view('backend.users.edit')->with('user', $user);
         }
         return redirect('admin/users');
     }

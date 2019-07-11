@@ -10,12 +10,12 @@ class QuestController extends Controller
 {
     public function getIndex()
     {
-        return view('quests.index')->with('quests',Quest::all());
+        return view('backend.quests.index')->with('quests',Quest::all());
     }
 
     public function getNew()
     {
-        return view('quests.new');
+        return view('backend.quests.new');
     }
 
     public function postNew()
@@ -45,7 +45,7 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         if ($quest)
         {
-            return view('quests.detail')->with('quest', $quest);
+            return view('backend.quests.detail')->with('quest', $quest);
         }
         return redirect('admin/quests');
     }
@@ -55,7 +55,7 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         if ($quest)
         {
-            return view('quests.edit')->with('quest', $quest);
+            return view('backend.quests.edit')->with('quest', $quest);
         }
         return redirect('admin/quests');
     }

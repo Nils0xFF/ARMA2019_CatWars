@@ -12,12 +12,12 @@ class CatController extends Controller
     public function getIndex()
     {
         $cats = Cat::orderBy('user_id','desc')->get();
-        return view('cats.index')->with('cats',$cats);
+        return view('backend.cats.index')->with('cats',$cats);
     }
 
     public function getNew()
     {
-        return view('cats.new');
+        return view('backend.cats.new');
     }
 
     public function postNew()
@@ -47,7 +47,7 @@ class CatController extends Controller
         $cat = Cat::find($id);
         if ($cat)
         {
-            return view('cats.detail')->with('cat', $cat);
+            return view('backend.cats.detail')->with('cat', $cat);
         }
         return redirect('admin/cats');
     }
@@ -57,7 +57,7 @@ class CatController extends Controller
         $cat = Cat::find($id);
         if ($cat)
         {
-            return view('cats.edit')->with('cat', $cat);
+            return view('backend.cats.edit')->with('cat', $cat);
         }
         return redirect('admin/cats');
     }
