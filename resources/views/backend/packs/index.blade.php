@@ -20,18 +20,18 @@
             <td>{{$pack->name}}</td>
             <td>@if($pack->price < 100)&nbsp @endif {{$pack->price}}</td>
             <td>
-                <a type="button" class="btn btn-secondary" href="{{ url('admin/packs/detail/'.$pack->id) }}" >Detail</a>
-                <a type="button" class="btn btn-warning" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
-                <a type="button" class="btn btn-danger" href="{{ url('admin/packs/delete/'.$pack->id) }}" >Delete</a>
+                <a class="btn btn-secondary" href="{{ url('admin/packs/detail/'.$pack->id) }}" >Detail</a>
+                <a class="btn btn-warning" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
+                <a class="btn btn-danger" href="{{ url('admin/packs/delete/'.$pack->id) }}" >Delete</a>
             </td>
             </tr>
             @endforeach
         </tbody>
     </table>
     {{ $packs->links() }}
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add</a>
+<a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add First Pack</a>
+<a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add First Pack</a>
 @endif
 
 

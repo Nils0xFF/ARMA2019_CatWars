@@ -15,6 +15,15 @@ class Breed extends Model
         "breedImage" => "required"
     ];
 
+    public static $rules_edit = [
+        "name" => "required|min:2",
+        "max_hp" => "required|int|gt:0",
+        "cuteness" => "required|int|gt:0",
+        "fur_thickness" => "required|int|gt:0",
+        "claw_sharpness" => "required|int|gt:0",
+        "rarity_id" => "required"
+    ];
+
     function rarity(){
         return $this->belongsTo('App\Models\Rarity');
     }

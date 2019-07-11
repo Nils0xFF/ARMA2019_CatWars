@@ -8,10 +8,8 @@
     <h3>Pack</h3>
     <h1>{{$pack->name}}</h1>
 
-    <hr class="my-4">
-
-    <div id="content">
-        <table class="table">
+    <div id="content pt-5">
+        <table class="table mt-5">
             <tbody>
                 <tr>
                     <th scope="row">ID:</th>
@@ -39,8 +37,8 @@
                                 <tr>
                                 <td>{{$breed->name}}</td>
                                 <td>
-                                    <a type="button" class="btn btn-secondary" href="{{ url('admin/breeds/detail/'.$breed->id) }}" >Detail</a>
-                                    <a type="button" class="btn btn-danger" href="{{ url('admin/packs/removeBreed/'.$pack->id.'/'.$breed->id) }}" >Remove</a>
+                                    <a class="btn btn-secondary" href="{{ url('admin/breeds/detail/'.$breed->id) }}" >Detail</a>
+                                    <a class="btn btn-danger" href="{{ url('admin/packs/removeBreed/'.$pack->id.'/'.$breed->id) }}" >Remove</a>
                                 </td>
                                 </tr>
                                 @endforeach
@@ -78,7 +76,7 @@
         </div>
         @endif
         <br>
-        <a type="button" class="btn btn-warning btn-lg btn-block" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
+        <a class="btn btn-warning btn-lg btn-block" href="{{ url('admin/packs/edit/'.$pack->id) }}" >Edit</a>
 
     </div><!--content-->
 </div><!--jumbotron-->

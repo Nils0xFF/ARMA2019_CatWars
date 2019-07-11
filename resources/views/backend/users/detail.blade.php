@@ -7,10 +7,8 @@
     <h3>User</h3>
     <h1>{{$user->name}}</h1>
 
-    <hr class="my-4">
-
     <div class="content">
-        <table class="table">
+        <table class="table mt-5">
             <tbody>
                 <tr>
                     <th scope="row">ID:</th>
@@ -35,7 +33,7 @@
             </tbody>
         </table>
         <br>
-        <a type="button" class="btn btn-warning btn-lg btn-block" href="{{ url('admin/users/edit/'.$user->id) }}" >Edit</a>
+        <a class="btn btn-warning btn-lg btn-block" href="{{ url('admin/users/edit/'.$user->id) }}" >Edit</a>
     </div>
 </div><!--jumbotron-->
 

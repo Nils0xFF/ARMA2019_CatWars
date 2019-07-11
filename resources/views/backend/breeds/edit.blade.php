@@ -36,6 +36,15 @@
     @endif
 </div>
 <div class="form-group">
+    {{Form::label('Image', 'Bild')}}
+    {{Form::file('breedImage')}}
+    @if ($errors->has('breedImage'))
+        <span class="help-block">
+            <strong>{{ $errors->first('breedImage')}}</strong>
+        </span>
+    @endif
+</div>
+<div class="form-group">
     {{Form::submit('Speichern', ['class'=>'btn btn-primary'])}}
 </div>
 

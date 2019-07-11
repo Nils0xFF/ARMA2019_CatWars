@@ -6,19 +6,17 @@
 <div class="jumbotron">
     <div class="container ">
         <div class="row p-auto">
-                <div class="col-lg-2 align-self-center">
+                <div class="col-sm-4">
                     <h3>Breed</h3>
                     <h1>{{$breed->name}}</h1>
                 </div>
-                <div class="col-lg-10">
-                    <img src="{{$path}}" class="rounded float-right" alt="Image">
+                <div class="col-sm-8">
+                    <img class="img-fluid" src="{{$path}}" class="rounded float-right" alt="Image">
                 </div>
         </div>
     </div>
 
-    <hr class="my-4">
-
-    <div class="content">
+    <div class="content mt-4">
         <table class="table">
             <tbody>
                 <tr>
@@ -56,7 +54,7 @@
             </tbody>
         </table>
         <br>
-        <a type="button" class="btn btn-warning btn-lg btn-block" href="{{ url('admin/breeds/edit/'.$breed->id) }}" >Edit</a>
+        <a class="btn btn-warning btn-lg btn-block" href="{{ url('admin/breeds/edit/'.$breed->id) }}" >Edit</a>
     </div>
 </div><!--jumbotron-->
 

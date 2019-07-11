@@ -31,7 +31,7 @@
             </tbody>
         </table>
         <br>
-        <a type="button" class="btn btn-warning btn-lg btn-block" href="{{ url('admin/cats/edit/'.$cat->id) }}" >Edit</a>
+        <a class="btn btn-warning btn-lg btn-block" href="{{ url('admin/cats/edit/'.$cat->id) }}" >Edit</a>
     </div>
 </div><!--jumbotron-->
 

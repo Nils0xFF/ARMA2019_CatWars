@@ -22,18 +22,18 @@
         <td>{{$cat->breed->name}}</td>
         <td>{{$cat->user->name}}</td>
         <td>
-            <a type="button" class="btn btn-secondary" href="{{ url('admin/cats/detail/'.$cat->id) }}" >Detail</a>
-            <a type="button" class="btn btn-warning" href="{{ url('admin/cats/edit/'.$cat->id) }}" >Edit</a>
-            <a type="button" class="btn btn-danger" href="{{ url('admin/cats/delete/'.$cat->id) }}" >Delete</a>
+            <a class="btn btn-secondary" href="{{ url('admin/cats/detail/'.$cat->id) }}" >Detail</a>
+            <a class="btn btn-warning" href="{{ url('admin/cats/edit/'.$cat->id) }}" >Edit</a>
+            <a class="btn btn-danger" href="{{ url('admin/cats/delete/'.$cat->id) }}" >Delete</a>
         </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 {{ $cats->links() }}
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add</a>
+<a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add</a>
 @else 
-<a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add First Cat</a>
+<a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add First Cat</a>
 @endif
 
 @endsection

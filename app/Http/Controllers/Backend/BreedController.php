@@ -62,7 +62,7 @@ class BreedController extends Controller
     public function getDetail($id = null)
     {
         $breed = Breed::find($id);
-        $path = url('/img/breeds/'.$id.'.png');
+        $path = url('/img/breeds/'.$id.'.jpg');
         if ($breed)
         {
             return view('backend.breeds.detail')->with('breed', $breed)->with('path',$path);
@@ -85,7 +85,7 @@ class BreedController extends Controller
         $breed = Breed::find($id);
         if ($breed)
         {
-            $validator = Validator::make(Request::all(), Breed::$rules);
+            $validator = Validator::make(Request::all(), Breed::$rules_edit);
 
             if ($validator->passes())
             { 
@@ -97,6 +97,18 @@ class BreedController extends Controller
                 $breed->fur_thickness = Request::input('fur_thickness');
                 $breed->max_hp = Request::input('max_hp');
                 $breed->save(); 
+
+                $file = Request::file('breedImage');
+                if($file){
+                    $image = Image::make(Request::file('breedImage')->getRealPath())
+                    ->resize(600,600, function($c) {
+                        $c->aspectRatio();
+                    });
+                    $image->save(public_path('img/breeds/'. $breed->id.'.'.$file->getClientOriginalExtension()));
+                }
+
+    
+                return redirect('admin/breeds');
             }
             else
             {

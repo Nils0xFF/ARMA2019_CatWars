@@ -7,10 +7,8 @@
     <h3>Rarity</h3>
     <h1>{{$rarity->name}}</h1>
 
-    <hr class="my-4">
-
     <div class="content">
-        <table class="table">
+        <table class="table mt-4">
             <tbody>
                 <tr>
                     <th scope="row">ID:</th>
@@ -31,7 +29,7 @@
             </tbody>
         </table>
         <br>
-        <a type="button" class="btn btn-warning btn-lg btn-block" href="{{ url('admin/rarities/edit/'.$rarity->id) }}" >Edit</a>
+        <a class="btn btn-warning btn-lg btn-block" href="{{ url('admin/rarities/edit/'.$rarity->id) }}" >Edit</a>
     </div>
 </div><!--jumbotron-->
 

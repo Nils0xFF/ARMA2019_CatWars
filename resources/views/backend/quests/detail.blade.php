@@ -7,9 +7,7 @@
     <h3>Quest</h3>
     <h1>{{$quest->name}}</h1>
 
-    <hr class="my-4">
-
-    <div class="content">
+    <div class="content mt-4">
         <table class="table">
             <tbody>
                 <tr>
@@ -39,7 +37,7 @@
             </tbody>
         </table>
         <br>
-        <a type="button" class="btn btn-warning btn-lg btn-block" href="{{ url('admin/quests/edit/'.$quest->id) }}" >Edit</a>
+        <a class="btn btn-warning btn-lg btn-block" href="{{ url('admin/quests/edit/'.$quest->id) }}" >Edit</a>
     </div>
 </div><!--jumbotron-->
 
