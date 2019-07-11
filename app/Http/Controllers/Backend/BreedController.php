@@ -65,7 +65,7 @@ class BreedController extends Controller
         $path = url('/img/breeds/'.$id.'.jpg');
         if ($breed)
         {
-            return view('backend.breeds.detail')->with('breed', $breed)->with('path',$path);
+            return view('backend.breeds.detail')->with('breed', $breed);
         }
         return redirect('admin/breeds');
     }

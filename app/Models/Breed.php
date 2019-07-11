@@ -35,4 +35,15 @@ class Breed extends Model
     function packs(){
         return $this->belongsToMany('App\Models\Packs');
     }
+
+    function imagePath(){
+        if (file_exists( public_path() . '/img/breeds/' . $this->id . '.png')) {
+            return 'img/breeds/' . $this->id.'.png';
+        } else if (file_exists( public_path() . '/img/breeds/' . $this->id . '.jpg')) {
+            return 'img/breeds/' . $this->id.'.jpg';
+        } else {
+            return 'https://via.placeholder.com/150';
+        }
+    }
+    
 }
