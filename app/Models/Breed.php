@@ -24,6 +24,6 @@ class Breed extends Model
     }
 
     function packs(){
-        return $this->hasMany('App\Models\Packs');
+        return $this->belongsToMany('App\Models\Packs');
     }
 }
