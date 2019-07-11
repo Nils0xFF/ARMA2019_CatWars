@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('rarities', 'Backend\RarityController@getIndex');
     Route::get('rarities/index', 'Backend\RarityController@getIndex');
 
+    Route::get('rarities/detail/{id?}', 'Backend\RarityController@getDetail');
+
     Route::get('rarities/new', 'Backend\RarityController@getNew');
     Route::post('rarities/new', 'Backend\RarityController@postNew');
 
@@ -41,6 +43,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('breeds', 'Backend\BreedController@getIndex');
     Route::get('breeds/index', 'Backend\BreedController@getIndex');
 
+    Route::get('breeds/detail/{id?}', 'Backend\BreedController@getDetail');
+
     Route::get('breeds/new', 'Backend\BreedController@getNew');
     Route::post('breeds/new', 'Backend\BreedController@postNew');
 
@@ -53,6 +57,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     //Cats
     Route::get('cats', 'Backend\CatController@getIndex');
     Route::get('cats/index', 'Backend\CatController@getIndex');
+
+    Route::get('cats/detail/{id?}', 'Backend\CatController@getDetail');
 
     Route::get('cats/new', 'Backend\CatController@getNew');
     Route::post('cats/new', 'Backend\CatController@postNew');
@@ -67,6 +73,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('packs', 'Backend\PackController@getIndex');
     Route::get('packs/index', 'Backend\PackController@getIndex');
 
+    Route::get('packs/detail/{id?}', 'Backend\PackController@getDetail');
+
     Route::get('packs/new', 'Backend\PackController@getNew');
     Route::post('packs/new', 'Backend\PackController@postNew');
 
@@ -80,6 +88,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('users', 'Backend\UserController@getIndex');
     Route::get('users/index', 'Backend\UserController@getIndex');
 
+    Route::get('users/detail/{id?}', 'Backend\UserController@getDetail');
+
     Route::get('users/edit/{id?}', 'Backend\UserController@getEdit');
     Route::post('users/edit/{id?}', 'Backend\UserController@postEdit');
 
@@ -88,6 +98,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
     Route::get('quests', 'Backend\QuestController@getIndex');
     Route::get('quests/index', 'Backend\QuestController@getIndex');
+
+    Route::get('quests/detail/{id?}', 'Backend\QuestController@getDetail');
 
     Route::get('quests/new', 'Backend\QuestController@getNew');
     Route::post('quests/new', 'Backend\QuestController@postNew');
