@@ -6,6 +6,7 @@ use App\Models\Breed;
 use Validator;
 use Request;
 use Image;
+use File;
 
 
 class BreedController extends Controller
@@ -61,9 +62,10 @@ class BreedController extends Controller
     public function getDetail($id = null)
     {
         $breed = Breed::find($id);
+        $path = url('/img/breeds/'.$id.'.png');
         if ($breed)
         {
-            return view('backend.breeds.detail')->with('breed', $breed);
+            return view('backend.breeds.detail')->with('breed', $breed)->with('path',$path);
         }
         return redirect('admin/breeds');
     }
@@ -110,6 +112,7 @@ class BreedController extends Controller
         if ($breed)
         {
             $breed->delete();
+            File::delete('img/breeds/'.$id.'.png');
         }
         return redirect('admin/breeds');
     }

@@ -4,8 +4,17 @@
 
 <br>
 <div class="jumbotron">
-    <h3>Breed</h3>
-    <h1>{{$breed->name}}</h1>
+    <div class="container ">
+        <div class="row p-auto">
+                <div class="col-lg-2 align-self-center">
+                    <h3>Breed</h3>
+                    <h1>{{$breed->name}}</h1>
+                </div>
+                <div class="col-lg-10">
+                    <img src="{{$path}}" class="rounded float-right" alt="Image">
+                </div>
+        </div>
+    </div>
 
     <hr class="my-4">
 
