@@ -1,10 +1,9 @@
 @extends('layouts.frontend')
 
 @section('content')
-<h1>Packs</h1>
     <div class="row">
-        @foreach (PackModel::all() as $pack)
-        <div class="col-6">
+        @foreach ($packs as $pack)
+        <div class="col-3 pb-3">
             <div class="card w-100">
                     <div class="card-header">
                     {{$pack->name}}
@@ -17,4 +16,5 @@
         </div>
         @endforeach
     </div>
+    {{ $packs->render() }}
 @endsection

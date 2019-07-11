@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="row">
-        @foreach (QuestModel::all() as $quest)
-        <div class="col-6">
+        @foreach ($quests as $quest)
+        <div class="col-6 pb-3">
             <div class="card">
                 <h5 class="card-header">{{$quest->name}}</h5>
                     <div class="card-body">
@@ -29,5 +29,6 @@
 
         @endforeach
     </div>
+    {{ $quests->render() }}
     <script type="text/javascript" src="{{ URL::asset('js/questPage.js') }}"></script>
 @endsection

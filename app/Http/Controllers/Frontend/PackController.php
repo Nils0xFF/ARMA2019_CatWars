@@ -14,7 +14,7 @@ use Auth;
 class PackController extends Controller
 {
     function getIndex(){
-        return view('frontend.packs.index');
+        return view('frontend.packs.index')->with('packs', Pack::paginate(12));
     }
 
     function getOpen($pack_id = null){

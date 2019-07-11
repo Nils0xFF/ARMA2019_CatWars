@@ -25,14 +25,17 @@ function run(){
         const endDate = new Date(progressDiv.getAttribute('data-endTime') * 1000);
         const currentDate = new Date();
 
-        if(currentDate >= endDate){
-            progressDiv.querySelector('.quest-progress').innerHTML = "";
+
+        const duration = (endDate - startDate) / 1000;
+        const timeElapsed = (currentDate - startDate) / 1000;
+        const timeRemaing = (endDate - currentDate) / 1000;
+
+        if(timeRemaing <= 1){
+            progressDiv.querySelector('.quest-progress').innerHTML = "Ready";
             progressDiv.parentElement.querySelector('.completeButton').classList.remove('disabled');
             progressDiv.querySelector('.quest-progress').style.width = "100%";
         }else{
-            const duration = (endDate - startDate) / 1000;
-            const timeElapsed = (currentDate - startDate) / 1000;
-            const timeRemaing = (endDate - currentDate) / 1000;
+
 
             progressDiv.querySelector('.quest-progress').style.width = (timeElapsed / duration) * 100 + '%';
 

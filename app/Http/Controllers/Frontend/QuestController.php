@@ -12,7 +12,7 @@ use DateTime;
 class QuestController extends Controller
 {
     function getIndex(){
-        return view('frontend.quests.index')->with('user_quests', Auth::user()->quests());
+        return view('frontend.quests.index')->with('quests', Quest::paginate(6))->with('user_quests', Auth::user()->quests());
     }
 
     function startQuest($id){
