@@ -14,8 +14,8 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('init/roles', 'InitController@createRoles');
-Route::get('init/admin', 'InitController@makeMeAdmin');
+Route::get('init/roles', 'Backend\InitController@createRoles');
+Route::get('init/admin', 'Backend\InitController@makeMeAdmin');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function() {

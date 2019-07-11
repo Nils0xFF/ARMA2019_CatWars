@@ -26,6 +26,9 @@ class BreedController extends Controller
         if ($validator->passes())
         {
             $breed = new Breed();
+            $file = Request::file('breedImage');
+
+
             $breed->name = Request::input('name');
             $breed->fur_thickness = Request::input('fur_thickness');
             $breed->claw_sharpness = Request::input('claw_sharpness');
@@ -33,7 +36,8 @@ class BreedController extends Controller
             $breed->rarity_id = Request::input('rarity_id');
             $breed->fur_thickness = Request::input('fur_thickness');
             $breed->max_hp = Request::input('max_hp');
-            $breed->save(); 
+            $file->move(public_path('img/breeds'), $breed->id.'.'.$file->getClientOriginExtension());
+            $breed->save();
             return redirect('admin/breeds');
         }
         else
