@@ -18,8 +18,8 @@
 Route::group(['middleware' => ['auth']], function() {
 
 
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'Frontend\CollectionController@getIndex');
+    Route::get('/home', 'Frontend\CollectionController@getIndex');
 
     Route::get('/quests', 'Frontend\QuestController@getIndex');
     Route::get('/quests/start/{id?}', 'Frontend\QuestController@startQuest');
