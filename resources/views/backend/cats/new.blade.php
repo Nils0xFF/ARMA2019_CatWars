@@ -15,7 +15,7 @@
     @endif
 </div>
 <div class="form-group">
-    {{Form::label('breed_id', 'User')}}
+    {{Form::label('breed_id', 'Breed')}}
     {{Form::select('breed_id', BreedModel::all()->pluck('name', 'id'), null,  ['class'=>'form-control'])}}
     @if ($errors->has('breed_id'))
         <span class="help-block">

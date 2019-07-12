@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <th scope="row">description:</th>
-                    <td>{{$quest->current_hp}}</td>
+                    <td>{{$quest->description}</td>
                 </tr>
                 <tr>
                     <th scope="row">duration:</th>
