@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Pack;
 use App\Models\Breed;
+use App\Models\Rarity;
 use Validator;
 use Request;
 
@@ -43,11 +44,15 @@ class PackController extends Controller
     public function getDetail($id = null)
     {
         $pack = Pack::find($id);
-        $pack_breedIDs = $pack->breeds->pluck('id');
-        $selectableBreeds = Breed::whereNotIn('id', $pack_breedIDs)->pluck('name', 'id');
         if ($pack)
         {
-            return view('backend.packs.detail')->with('pack', $pack)->with('selectableBreeds', $selectableBreeds);
+            $pack_breedIDs = $pack->breeds->pluck('id');
+            $selectableBreeds = Breed::whereNotIn('breeds.id', $pack_breedIDs)->get()->toArray();
+            $selectableBreedArray = [];
+            foreach($selectableBreeds as $breed){
+                $selectableBreedArray[$breed['id']] = $breed['name'] . ' (' . Rarity::find($breed['rarity_id'])->name .')';
+            }
+            return view('backend.packs.detail')->with('pack', $pack)->with('selectableBreeds', $selectableBreedArray);
         }
         return back();
     }

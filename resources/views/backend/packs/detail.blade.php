@@ -35,7 +35,7 @@
                             <tbody>
                                 @foreach ($pack->breeds as $breed)
                                 <tr>
-                                <td>{{$breed->name}}</td>
+                                <td>{{$breed->name}} ({{RarityModel::find($breed->rarity_id)->name}})</td>
                                 <td>
                                     <a class="btn btn-secondary" href="{{ url('admin/breeds/detail/'.$breed->id) }}" >Detail</a>
                                     <a class="btn btn-danger" href="{{ url('admin/packs/removeBreed/'.$pack->id.'/'.$breed->id) }}" >Remove</a>
@@ -52,7 +52,7 @@
                 </tr>
             </tbody>
         </table><br><br>
-        @if($selectableBreeds->count() > 0)
+        @if(count($selectableBreeds) > 0)
         <div class="container">
             <div class="row">
                 <div class="col-lg-10">
