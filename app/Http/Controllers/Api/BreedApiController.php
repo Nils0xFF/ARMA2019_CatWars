@@ -20,7 +20,7 @@ class BreedApiController extends Controller
         $breed = Breed::find($id);
         if($breed)
         {
-            return response()->json(['info' => $breed, 'image' => $breed->imagePath()]);
+            return response()->json(['info' => $breed, 'imagePath' => $breed->imagePath()]);
         }
         else return response()->json(['error' => 'Not Found'],404);
     }
