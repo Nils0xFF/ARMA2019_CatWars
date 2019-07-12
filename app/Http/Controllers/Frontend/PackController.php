@@ -14,7 +14,7 @@ use Auth;
 class PackController extends Controller
 {
     function getIndex(){
-        return view('frontend.packs.index')->with('packs', Pack::has('breeds', ">=", "1")->paginate(12));
+        return view('frontend.packs.index')->with('packs', Pack::has('breeds', ">=", "1")->orderBy('price')->paginate(12));
     }
 
     function getOpen($pack_id = null){
