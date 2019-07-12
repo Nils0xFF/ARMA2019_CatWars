@@ -9,8 +9,10 @@
                     <div class="card-body">
                         <p class="card-text">
                         {{$quest->description}}<br>
-                        Duration: {{$quest->duration}} Seconds<br>
-                        Reward: {{$quest->reward}} Coins
+                        <div class="mt-5 pb-3">
+                            <span class="float-left"><i class="oi oi-clock text-center"></i> {{$quest->duration}} Seconds</span>
+                            <span class="float-right"><i class="oi oi-dollar text-center"></i> {{$quest->reward}} Coins</span>   
+                        </div>
                         @if(in_array($quest->id, Auth::user()->quests->pluck('id')->toArray()))
                             <br>
                             <div class="quest-progress-wrapper progress" data-startTime="{{strtotime(Auth::user()->quests->find($quest->id)->pivot->created_at)}}" data-endTime="{{strtotime(Auth::user()->quests->find($quest->id)->pivot->created_at) + $quest->duration }}">
