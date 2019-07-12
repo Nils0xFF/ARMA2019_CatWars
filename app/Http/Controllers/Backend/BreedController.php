@@ -49,7 +49,7 @@ class BreedController extends Controller
             });
             $image->save(public_path('img/breeds/'. $breed->id.'.'.$file->getClientOriginalExtension()));
 
-            return back();
+            return view('backend.breeds.index');
         }
         else
         {

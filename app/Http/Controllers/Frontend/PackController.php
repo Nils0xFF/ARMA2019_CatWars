@@ -14,13 +14,13 @@ use Auth;
 class PackController extends Controller
 {
     function getIndex(){
-        return view('frontend.packs.index')->with('packs', Pack::paginate(12));
+        return view('frontend.packs.index')->with('packs', Pack::has('breeds', ">=", "1")->paginate(12));
     }
 
     function getOpen($pack_id = null){
         if($pack_id){
             $pack = Pack::find($pack_id);
-            if($pack && Auth::user()->coins >= $pack->price ){
+            if($pack && Auth::user()->coins >= $pack->price && count($pack->breeds) >= 1 ){
                 Auth::user()->coins -= $pack->price;
                 Auth::user()->save();
                 return view('frontend.packs.content')->with('cats', $this->generatePackContent($pack_id));
