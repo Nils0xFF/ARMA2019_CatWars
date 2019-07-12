@@ -31,7 +31,7 @@ class QuestController extends Controller
             $quest->duration = Request::input('duration');
             $quest->reward = Request::input('reward');
             $quest->save(); 
-            return back();
+            return redirect('admin/quests');
         }
         else
         {
@@ -81,7 +81,7 @@ class QuestController extends Controller
                 return back()->withErrors($validator)->withInput()->with('quest',$quest);
             }
         }
-        return back();
+        return redirect('admin/quests');
     }
     
     public function postDelete($id = null)

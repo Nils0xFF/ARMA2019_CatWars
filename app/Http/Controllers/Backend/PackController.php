@@ -30,7 +30,7 @@ class PackController extends Controller
             $pack->name = Request::input('name');
             $pack->price = Request::input('price');
             $pack->save(); 
-            return back();
+            return redirect('admin/packs');
         }
         else
         {
@@ -80,7 +80,7 @@ class PackController extends Controller
                 return back()->withErrors($validator)->withInput()->with('pack',$pack);
             }
         }
-        return view('backend.cats.index');
+        return redirect('admin/packs');
     }
     
     public function postDelete($id = null)

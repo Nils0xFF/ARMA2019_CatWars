@@ -32,7 +32,7 @@ class CatController extends Controller
             $maxHp = (Breed::find($cat->breed_id))->max_hp;
             $cat->current_hp = $maxHp;
             $cat->save(); 
-            return back();
+            return redirect('admin/cats');
         }
         else
         {
@@ -83,7 +83,7 @@ class CatController extends Controller
                 return back()->withErrors($validator)->withInput()->with('cat',$cat);
             }
         }
-        return view('backend.cats.index');
+        return redirect('admin/cats');
     }
     
     public function postDelete($id = null)

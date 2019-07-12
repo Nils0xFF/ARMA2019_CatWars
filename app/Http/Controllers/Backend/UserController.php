@@ -52,7 +52,7 @@ class UserController extends Controller
                 return back()->withErrors($validator)->withInput()->with('user',$user);
             }
         }
-        return view('backend.users.index');
+        return redirect('admin/users');
     }
     
     public function postDelete($id = null)
@@ -62,6 +62,6 @@ class UserController extends Controller
         {
             $user->delete();
         }
-        return redirect('admin/users');
+        return back();
     }
 }

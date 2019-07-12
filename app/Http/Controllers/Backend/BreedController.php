@@ -114,7 +114,7 @@ class BreedController extends Controller
                 }
 
     
-                return redirect('admin/breeds/');
+                return redirect('admin/breeds');
             }
             else
             {

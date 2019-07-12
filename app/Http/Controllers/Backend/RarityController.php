@@ -29,7 +29,7 @@ class RarityController extends Controller
             $rarity->name = Request::input('name');
             $rarity->chance = Request::input('chance');
             $rarity->save(); 
-            return back();
+            return redirect('admin/rarities');
         }
         else
         {
@@ -74,7 +74,7 @@ class RarityController extends Controller
             }
             else
             {
-                return redirect('admin/rarities/edit/'.$id)->withErrors($validator)->withInput()->with('rarity',$rarity);
+                return back()->withErrors($validator)->withInput()->with('rarity',$rarity);
             }
         }
         return redirect('admin/rarities');
