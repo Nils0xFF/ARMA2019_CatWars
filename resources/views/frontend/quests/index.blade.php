@@ -10,11 +10,16 @@
                         <p class="card-text">
                         {{$quest->description}}<br>
                         Duration: {{$quest->duration}} <br>
-                        Reward: {{$quest->duration}}
+                        Reward: {{$quest->reward}}
                         @if(in_array($quest->id, Auth::user()->quests->pluck('id')->toArray()))
                             <br>
-                            <div class="progress" data-startTime="{{strtotime(Auth::user()->quests->find($quest->id)->pivot->created_at)}}" data-endTime="{{strtotime(Auth::user()->quests->find($quest->id)->pivot->created_at) + $quest->duration }}">
+                            <div class="quest-progress-wrapper progress" data-startTime="{{strtotime(Auth::user()->quests->find($quest->id)->pivot->created_at)}}" data-endTime="{{strtotime(Auth::user()->quests->find($quest->id)->pivot->created_at) + $quest->duration }}">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated quest-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        @else
+                        <br>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         @endif
                         </p>

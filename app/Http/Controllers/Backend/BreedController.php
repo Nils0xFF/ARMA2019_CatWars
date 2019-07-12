@@ -100,6 +100,12 @@ class BreedController extends Controller
 
                 $file = Request::file('breedImage');
                 if($file){
+                    if (file_exists( public_path() . '/img/breeds/' . $id . '.png')) {
+                        File::delete(public_path() . '/img/breeds/' . $id . '.png');
+                    }
+                    if (file_exists( public_path() . '/img/breeds/' . $id . '.jpg')) {
+                        File::delete( public_path() . '/img/breeds/' . $id . '.png');
+                    }
                     $image = Image::make(Request::file('breedImage')->getRealPath())
                     ->resize(600,600, function($c) {
                         $c->aspectRatio();
@@ -108,7 +114,7 @@ class BreedController extends Controller
                 }
 
     
-                return back();
+                return redirect('admin/breeds/');
             }
             else
             {
@@ -123,8 +129,14 @@ class BreedController extends Controller
         $breed = Breed::find($id);
         if ($breed)
         {
+            if (file_exists( public_path() . '/img/breeds/' . $id . '.png')) {
+                File::delete(public_path() . '/img/breeds/' . $id . '.png');
+            }
+            if (file_exists( public_path() . '/img/breeds/' . $id . '.jpg')) {
+                File::delete( public_path() . '/img/breeds/' . $id. '.png');
+            }
             $breed->delete();
-            File::delete('img/breeds/'.$id.'.png');
+
         }
         return back();
     }
