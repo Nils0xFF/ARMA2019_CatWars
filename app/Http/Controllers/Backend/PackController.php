@@ -47,7 +47,7 @@ class PackController extends Controller
         if ($pack)
         {
             $pack_breedIDs = $pack->breeds->pluck('id');
-            $selectableBreeds = Breed::whereNotIn('breeds.id', $pack_breedIDs)->get()->toArray();
+            $selectableBreeds = Breed::select('breeds.*')->whereNotIn('breeds.id', $pack_breedIDs)->join('rarities', 'breeds.rarity_id', '=', 'rarities.id')->orderBy('rarities.chance', 'desc')->get()->toArray();
             $selectableBreedArray = [];
             foreach($selectableBreeds as $breed){
                 $selectableBreedArray[$breed['id']] = $breed['name'] . ' (' . Rarity::find($breed['rarity_id'])->name .')';

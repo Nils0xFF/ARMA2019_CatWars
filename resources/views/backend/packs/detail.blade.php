@@ -33,7 +33,7 @@
                     <td>
                         <table class="table">
                             <tbody>
-                                @foreach ($pack->breeds as $breed)
+                                @foreach ($pack->breeds()->join('rarities', 'breeds.rarity_id', '=', 'rarities.id')->orderBy('rarities.chance', 'desc')->get() as $breed)
                                 <tr>
                                 <td>{{$breed->name}} ({{RarityModel::find($breed->rarity_id)->name}})</td>
                                 <td>
