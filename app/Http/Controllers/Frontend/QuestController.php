@@ -19,7 +19,7 @@ class QuestController extends Controller
         if(!in_array($id, Auth::user()->quests->pluck('id')->toArray())){
             Auth::user()->quests()->attach(Quest::find($id));
         };
-        return redirect('quests');
+        return back();
     }
 
     function completeQuest($id){
@@ -34,6 +34,6 @@ class QuestController extends Controller
                 Auth::user()->save();
             } 
         };
-        return redirect('quests');
+        return back();
     }
 }

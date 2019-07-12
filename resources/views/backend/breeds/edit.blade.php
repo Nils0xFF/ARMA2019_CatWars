@@ -5,7 +5,7 @@
 <h1>Edit Breed</h1>
 
 
-{{Form::model($breed, ['url' => 'admin/breeds/edit/'.$breed->id])}}
+{{Form::model($breed, ['url' => 'admin/breeds/edit/'.$breed->id, 'files' => true])}}
 <div class="form-group">
     {{Form::label('name', 'Name')}}
     {{Form::text('name', null, ['class'=>'form-control'])}}

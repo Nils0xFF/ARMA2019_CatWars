@@ -18,7 +18,7 @@ function fancyTimeFormat(time)
 }
 
 function run(){
-    document.querySelectorAll('.progress').forEach(progressDiv => {
+    document.querySelectorAll('.quest-progress-wrapper').forEach(progressDiv => {
 
         console.log(progressDiv.getAttribute('data-startTime'));
         const startDate = new Date(progressDiv.getAttribute('data-startTime') * 1000);

@@ -31,11 +31,11 @@ class QuestController extends Controller
             $quest->duration = Request::input('duration');
             $quest->reward = Request::input('reward');
             $quest->save(); 
-            return redirect('admin/quests');
+            return back();
         }
         else
         {
-            return redirect('admin/quests/new')->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
             // edit: return redirect('quests/edit/'.$quest->id)->with('quest', $quest)->withErrors($validator)->withInput();
         }
 
@@ -48,7 +48,7 @@ class QuestController extends Controller
         {
             return view('backend.quests.detail')->with('quest', $quest);
         }
-        return redirect('admin/quests');
+        return back();
     }
     
     public function getEdit($id = null)
@@ -58,7 +58,7 @@ class QuestController extends Controller
         {
             return view('backend.quests.edit')->with('quest', $quest);
         }
-        return redirect('admin/quests');
+        return back();
     }
     
     public function postEdit($id = null)
@@ -66,7 +66,7 @@ class QuestController extends Controller
         $quest = Quest::find($id);
         if ($quest)
         {
-            $validator = Validator::make(Request::all(), Quest::$edit_rules);
+            $validator = Validator::make(Request::all(), Quest::$rules);
 
             if ($validator->passes())
             {
@@ -78,10 +78,10 @@ class QuestController extends Controller
             }
             else
             {
-                return redirect('admin/quests/edit/'.$id)->withErrors($validator)->withInput()->with('quest',$quest);
+                return back()->withErrors($validator)->withInput()->with('quest',$quest);
             }
         }
-        return redirect('admin/quests/detail/'.$id);
+        return back();
     }
     
     public function postDelete($id = null)
@@ -91,6 +91,6 @@ class QuestController extends Controller
         {
             $quest->delete();
         }
-        return redirect('admin/quests');
+        return back();
     }
 }

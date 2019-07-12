@@ -28,8 +28,9 @@
             @endforeach
         </tbody>
     </table>
-    {{ $packs->links() }}
-<a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add</a>
+    <a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add</a>
+    {{ $packs->render() }}
+
 @else 
 <a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/packs/new') }}" >Add First Pack</a>
 @endif

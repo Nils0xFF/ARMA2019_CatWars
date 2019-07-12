@@ -29,8 +29,9 @@
         @endforeach
     </tbody>
 </table>
-{{ $quests->links() }}
 <a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/quests/new') }}" >Add</a>
+{{ $quests->links() }}
+
 @else 
 <a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/quests/new') }}" >Add First Quest</a>
 @endif

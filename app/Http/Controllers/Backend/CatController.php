@@ -32,11 +32,11 @@ class CatController extends Controller
             $maxHp = (Breed::find($cat->breed_id))->max_hp;
             $cat->current_hp = $maxHp;
             $cat->save(); 
-            return redirect('admin/cats');
+            return back();
         }
         else
         {
-            return redirect('admin/cats/new')->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
             // edit: return redirect('admin/cats/edit/'.$cat->id)->with('cat', $cat)->withErrors($validator)->withInput();
         }
 
@@ -49,7 +49,7 @@ class CatController extends Controller
         {
             return view('backend.cats.detail')->with('cat', $cat);
         }
-        return redirect('admin/cats');
+        return back();
     }
     
     public function getEdit($id = null)
@@ -59,7 +59,7 @@ class CatController extends Controller
         {
             return view('backend.cats.edit')->with('cat', $cat);
         }
-        return redirect('admin/cats');
+        return back();
     }
     
     public function postEdit($id = null)
@@ -80,10 +80,10 @@ class CatController extends Controller
             }
             else
             {
-                return redirect('admin/cats/edit/'.$id)->withErrors($validator)->withInput()->with('cat',$cat);
+                return back()->withErrors($validator)->withInput()->with('cat',$cat);
             }
         }
-        return redirect('admin/cats/detail/'.$id);
+        return view('backend.cats.index');
     }
     
     public function postDelete($id = null)
@@ -93,6 +93,6 @@ class CatController extends Controller
         {
             $cat->delete();
         }
-        return redirect('admin/cats');
+        return back();
     }
 }

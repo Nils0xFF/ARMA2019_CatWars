@@ -11,7 +11,7 @@
                     <h1>{{$breed->name}}</h1>
                 </div>
                 <div class="col-sm-8">
-                    <img class="img-fluid" src="{{$path}}" class="rounded float-right" alt="Image">
+                    <img class="img-fluid" src="{{url($breed->imagePath())}}" class="rounded float-right" alt="Image">
                 </div>
         </div>
     </div>

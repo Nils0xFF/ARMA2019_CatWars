@@ -30,8 +30,8 @@
         @endforeach
     </tbody>
 </table>
-{{ $cats->links() }}
 <a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add</a>
+{{ $cats->links() }}
 @else 
 <a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/cats/new') }}" >Add First Cat</a>
 @endif

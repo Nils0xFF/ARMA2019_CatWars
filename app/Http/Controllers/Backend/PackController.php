@@ -30,11 +30,11 @@ class PackController extends Controller
             $pack->name = Request::input('name');
             $pack->price = Request::input('price');
             $pack->save(); 
-            return redirect('admin/packs');
+            return back();
         }
         else
         {
-            return redirect('admin/packs/new')->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
             // edit: return redirect('packs/edit/'.$pack->id)->with('pack', $pack)->withErrors($validator)->withInput();
         }
 
@@ -49,7 +49,7 @@ class PackController extends Controller
         {
             return view('backend.packs.detail')->with('pack', $pack)->with('selectableBreeds', $selectableBreeds);
         }
-        return redirect('admin/packs');
+        return back();
     }
     
     public function getEdit($id = null)
@@ -59,7 +59,7 @@ class PackController extends Controller
         {
             return view('backend.packs.edit')->with('pack', $pack);
         }
-        return redirect('admin/packs');
+        return back();
     }
     
     public function postEdit($id = null)
@@ -77,10 +77,10 @@ class PackController extends Controller
             }
             else
             {
-                return redirect('admin/packs/edit/'.$id)->withErrors($validator)->withInput()->with('pack',$pack);
+                return back()->withErrors($validator)->withInput()->with('pack',$pack);
             }
         }
-        return redirect('admin/packs/detail/'.$id);
+        return view('backend.cats.index');
     }
     
     public function postDelete($id = null)
@@ -90,7 +90,7 @@ class PackController extends Controller
         {
             $pack->delete();
         }
-        return redirect('admin/packs');
+        return back();
     }
 
     public function postAddBreed($id = null){
@@ -102,7 +102,7 @@ class PackController extends Controller
                 $pack->breeds()->attach($breed_id);
             }
         } 
-        return redirect('admin/packs/detail/'.$id);
+        return back();
     }
 
     public function getRemoveBreed($pack_id = null, $breed_id = null)
@@ -115,6 +115,6 @@ class PackController extends Controller
                 }
             }
         }
-        return redirect('admin/packs/detail/'.$pack_id);
+        return back();
     }
 }

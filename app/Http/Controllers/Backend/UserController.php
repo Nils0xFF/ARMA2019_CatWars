@@ -21,7 +21,7 @@ class UserController extends Controller
         {
             return view('backend.users.detail')->with('user', $user);
         }
-        return redirect('admin/users');
+        return back();
     }
     
     public function getEdit($id = null)
@@ -31,7 +31,7 @@ class UserController extends Controller
         {
             return view('backend.users.edit')->with('user', $user);
         }
-        return redirect('admin/users');
+        return back();
     }
     
     public function postEdit($id = null)
@@ -49,10 +49,10 @@ class UserController extends Controller
             }
             else
             {
-                return redirect('admin/users/edit/'.$id)->withErrors($validator)->withInput()->with('user',$user);
+                return back()->withErrors($validator)->withInput()->with('user',$user);
             }
         }
-        return redirect('admin/users/detail/'.$id);
+        return view('backend.users.index');
     }
     
     public function postDelete($id = null)

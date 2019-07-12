@@ -29,11 +29,11 @@ class RarityController extends Controller
             $rarity->name = Request::input('name');
             $rarity->chance = Request::input('chance');
             $rarity->save(); 
-            return redirect('admin/rarities');
+            return back();
         }
         else
         {
-            return redirect('admin/rarities/new')->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
             // edit: return redirect('rarities/edit/'.$rarity->id)->with('rarity', $rarity)->withErrors($validator)->withInput();
         }
 
@@ -46,7 +46,7 @@ class RarityController extends Controller
         {
             return view('backend.rarities.detail')->with('rarity', $rarity);
         }
-        return redirect('admin/rarities');
+        return back();
     }
     
     public function getEdit($id = null)
@@ -56,7 +56,7 @@ class RarityController extends Controller
         {
             return view('backend.rarities.edit')->with('rarity', $rarity);
         }
-        return redirect('admin/rarities');
+        return back();
     }
     
     public function postEdit($id = null)
@@ -77,7 +77,7 @@ class RarityController extends Controller
                 return redirect('admin/rarities/edit/'.$id)->withErrors($validator)->withInput()->with('rarity',$rarity);
             }
         }
-        return redirect('admin/rarities/detail/'.$id);
+        return redirect('admin/rarities');
     }
     
     public function postDelete($id = null)

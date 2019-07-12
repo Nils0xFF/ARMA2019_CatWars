@@ -49,11 +49,11 @@ class BreedController extends Controller
             });
             $image->save(public_path('img/breeds/'. $breed->id.'.'.$file->getClientOriginalExtension()));
 
-            return redirect('admin/breeds');
+            return view('backend.breeds.index');
         }
         else
         {
-            return redirect('admin/breeds/new')->withErrors($validator)->withInput();
+            return back()->withErrors($validator)->withInput();
             // edit: return redirect('admin/breeds/edit/'.$breed->id)->with('breed', $breed)->withErrors($validator)->withInput();
         }
 
@@ -65,9 +65,9 @@ class BreedController extends Controller
         $path = url('/img/breeds/'.$id.'.jpg');
         if ($breed)
         {
-            return view('backend.breeds.detail')->with('breed', $breed)->with('path',$path);
+            return view('backend.breeds.detail')->with('breed', $breed);
         }
-        return redirect('admin/breeds');
+        return back();
     }
     
     public function getEdit($id = null)
@@ -77,7 +77,7 @@ class BreedController extends Controller
         {
             return view('backend.breeds.edit')->with('breed', $breed);
         }
-        return redirect('admin/breeds');
+        return back();
     }
     
     public function postEdit($id = null)
@@ -100,6 +100,12 @@ class BreedController extends Controller
 
                 $file = Request::file('breedImage');
                 if($file){
+                    if (file_exists( public_path() . '/img/breeds/' . $id . '.png')) {
+                        File::delete(public_path() . '/img/breeds/' . $id . '.png');
+                    }
+                    if (file_exists( public_path() . '/img/breeds/' . $id . '.jpg')) {
+                        File::delete( public_path() . '/img/breeds/' . $id . '.png');
+                    }
                     $image = Image::make(Request::file('breedImage')->getRealPath())
                     ->resize(600,600, function($c) {
                         $c->aspectRatio();
@@ -108,7 +114,7 @@ class BreedController extends Controller
                 }
 
     
-                return redirect('admin/breeds');
+                return redirect('admin/breeds/');
             }
             else
             {
@@ -123,9 +129,15 @@ class BreedController extends Controller
         $breed = Breed::find($id);
         if ($breed)
         {
+            if (file_exists( public_path() . '/img/breeds/' . $id . '.png')) {
+                File::delete(public_path() . '/img/breeds/' . $id . '.png');
+            }
+            if (file_exists( public_path() . '/img/breeds/' . $id . '.jpg')) {
+                File::delete( public_path() . '/img/breeds/' . $id. '.png');
+            }
             $breed->delete();
-            File::delete('img/breeds/'.$id.'.png');
+
         }
-        return redirect('admin/breeds');
+        return back();
     }
 }

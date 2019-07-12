@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">Price: {{$pack->price}} Coins</p>
-                        <a href="{{url('packs/open/'.$pack->id)}}" class="btn btn-primary">Open</a>
+                        <a href="{{url('packs/open/'.$pack->id)}}" class="btn btn-primary {{ Auth::user()->coins < $pack->price ? 'disabled' : ''}}">Open</a>
                     </div>
                 </div>
         </div>
