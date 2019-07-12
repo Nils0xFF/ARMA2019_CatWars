@@ -55,7 +55,7 @@
         @if(count($selectableBreeds) > 0)
         <div class="container">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-8">
                     {{Form::open(['url' => 'admin/packs/addBreed/'.$pack->id])}}
                     <div class="form-group">
                         {{-- {{Form::label('breed', 'Breed')}} --}}
@@ -70,6 +70,11 @@
                 <div class="col-lg-2">
                     <div class="form-group">
                         {{Form::submit('Add Breed', ['class'=>'btn btn-primary'])}}
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <a class="btn btn-secondary" href="{{ url('admin/packs/addBreeds/'.$pack->id) }}" >Add All</a>
                     </div>
                 </div>
             </div>
