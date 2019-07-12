@@ -13,6 +13,8 @@
 
 
 
+Route::get('init/roles', 'Backend\InitController@createRoles');
+Route::get('init/admin', 'Backend\InitController@makeMeAdmin');
 
 
 Route::group(['middleware' => ['auth']], function() {
@@ -30,15 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/collection', 'Frontend\CollectionController@getIndex');
 });
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
-
-
-    Route::get('init/roles', 'Backend\InitController@createRoles');
-    Route::get('init/admin', 'Backend\InitController@makeMeAdmin');
-});
-
-
+#
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function() {
 
     // Default Admin Route
