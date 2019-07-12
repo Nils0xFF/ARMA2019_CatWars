@@ -24,5 +24,17 @@ class CatApiController extends Controller
         }
         else return response()->json(['error' => 'Not Found'],404);
     }
+
+    public function store(){
+        return response()->json(['error'=>'Function Not Supported Yet.']);
+    }
+
+    public function update($id){
+        return response()->json(['error'=>'Function Not Supported Yet.']);
+    }
+
+    public function destroy($id){
+        return response()->json(['error'=>'Function Not Supported Yet.']);
+    }
      
 }
