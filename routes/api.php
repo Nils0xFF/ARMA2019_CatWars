@@ -16,3 +16,19 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(['middleware' => ['auth:api']], function () {
+
+    //Breeds
+    Route::apiResources([
+        "breeds" => "Api\BreedApiController",
+        "cats" => "Api\CatApiController",
+        "packs" => "Api\PackApiController",
+        "quests" => "Api\QuestApiController",
+        "rarities" => "Api\RarityApiController",
+        "users" => "Api\UserApiController",
+    ]);
+
+
+});

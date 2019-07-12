@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles, HasApiTokens;
+
+    public static $rules = [
+        "name" => "required|min:2",
+        "coins" => "int|gte:0",
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +43,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function cats(){
+        return $this->hasMany('App\Models\Cat');
+    }
+
+    function quests(){
+        return $this->belongsToMany('App\Models\Quest')->withTimestamps();
+    }
+
 }

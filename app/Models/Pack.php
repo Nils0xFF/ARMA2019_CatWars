@@ -5,5 +5,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pack extends Model
 {
-    
+    public static $rules = [
+        "name" => "required|min:2",
+        "price" => "required|int|gte:0",
+    ];
+
+    function breeds(){
+        return $this->belongsToMany('App\Models\Breed');
+    }
 }

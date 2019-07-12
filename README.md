@@ -1,1 +1,1 @@
-"# ARMA2019_CatWars" 
+# ARMA2019_CatWars
