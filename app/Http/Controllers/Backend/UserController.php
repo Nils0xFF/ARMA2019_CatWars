@@ -52,7 +52,7 @@ class UserController extends Controller
                 return back()->withErrors($validator)->withInput()->with('user',$user);
             }
         }
-        return back();
+        return view('backend.users.index');
     }
     
     public function postDelete($id = null)

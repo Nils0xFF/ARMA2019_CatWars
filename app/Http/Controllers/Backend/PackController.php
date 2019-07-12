@@ -80,7 +80,7 @@ class PackController extends Controller
                 return back()->withErrors($validator)->withInput()->with('pack',$pack);
             }
         }
-        return back();
+        return view('backend.cats.index');
     }
     
     public function postDelete($id = null)

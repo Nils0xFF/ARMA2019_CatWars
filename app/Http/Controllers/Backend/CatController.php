@@ -83,7 +83,7 @@ class CatController extends Controller
                 return back()->withErrors($validator)->withInput()->with('cat',$cat);
             }
         }
-        return back();
+        return view('backend.cats.index');
     }
     
     public function postDelete($id = null)
@@ -93,6 +93,6 @@ class CatController extends Controller
         {
             $cat->delete();
         }
-        return back();;
+        return back();
     }
 }

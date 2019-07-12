@@ -77,7 +77,7 @@ class RarityController extends Controller
                 return redirect('admin/rarities/edit/'.$id)->withErrors($validator)->withInput()->with('rarity',$rarity);
             }
         }
-        return back();
+        return redirect('admin/rarities');
     }
     
     public function postDelete($id = null)
