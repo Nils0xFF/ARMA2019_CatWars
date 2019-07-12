@@ -122,4 +122,17 @@ class PackController extends Controller
         }
         return back();
     }
+
+    public function getAddBreeds($id)
+    {
+        $pack = Pack::find($id);
+        if($pack){
+            foreach(Breed::all() as $breed){
+                    if(!$pack->breeds->pluck('id')->contains($breed->id)){
+                        $pack->breeds()->attach($breed->id);
+                    }
+            }
+        } 
+        return back();
+    }
 }

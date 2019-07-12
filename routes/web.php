@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/collection', 'Frontend\CollectionController@getIndex');
 });
 #
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function() {
 
     // Default Admin Route
@@ -99,6 +100,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('packs/delete/{id?}', 'Backend\PackController@postDelete');
 
     Route::post('packs/addBreed/{id?}', 'Backend\PackController@postAddBreed');
+    Route::get('packs/addBreeds/{id?}', 'Backend\PackController@getAddBreeds');
     Route::get('packs/removeBreed/{pack_id}/{breed_id?}', 'Backend\PackController@getRemoveBreed');
 
 
