@@ -21,7 +21,7 @@
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->coins}}</td>
-        <td>{{$uid_cats[$user->id]}}</td>
+        <td>{{$user->cats_count}}</td>
         <td>
             <a class="btn btn-secondary" href="{{ url('admin/users/detail/'.$user->id) }}" >Detail</a>
             <a class="btn btn-warning" href="{{ url('admin/users/edit/'.$user->id) }}" >Edit</a>

@@ -12,12 +12,8 @@ class UserController extends Controller
 {
     public function getIndex()
     {
-        $users = User::paginate(8);
-        $uid_cats = array();
-        foreach(DB::select('SELECT u.id, count(c.breed_id) as catnumber FROM users u JOIN cats c ON c.user_id = u.id GROUP BY u.id') as $entry){
-            $uid_cats[$entry->id]  = $entry->catnumber;
-        }
-        return view('backend.users.index')->with('users',$users)->with('uid_cats',$uid_cats);
+        $users = User::withCount('cats')->paginate(8);
+        return view('backend.users.index')->with('users',$users);
     }
     
     public function getDetail($id = null)
