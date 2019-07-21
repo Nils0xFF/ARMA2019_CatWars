@@ -11,6 +11,7 @@
         <th scope="col">E-Mail</th>
         <th scope="col">Coins</th>
         <th scope="col">Number of Cats</th>
+        <th scope="col">Number of Breeds</th>
         <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -22,6 +23,7 @@
         <td>{{$user->email}}</td>
         <td>{{$user->coins}}</td>
         <td>{{$user->cats_count}}</td>
+        <td>{{$breeds_user[$user->id]}}</td>
         <td>
             <a class="btn btn-secondary" href="{{ url('admin/users/detail/'.$user->id) }}" >Detail</a>
             <a class="btn btn-warning" href="{{ url('admin/users/edit/'.$user->id) }}" >Edit</a>
