@@ -10,8 +10,9 @@ class UserController extends Controller
 {
     public function getIndex()
     {
-        $users = User::paginate(8);
-        return view('backend.users.index')->with('users',$users);
+        $users = User::withCount('cats')->paginate(8);
+        $breeds_user = countBreedsForUser();
+        return view('backend.users.index')->with('users',$users)->with('breeds_user',$breeds_user);
     }
     
     public function getDetail($id = null)
@@ -64,4 +65,12 @@ class UserController extends Controller
         }
         return back();
     }
+}
+
+
+function countBreedsForUser(){
+    $users = User::with('cats')->get();
+    $arr = array();
+    foreach ($users as $user) $arr[$user->id] = $user->cats->pluck('id','breed_id')->count();
+    return $arr;
 }

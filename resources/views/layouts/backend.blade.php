@@ -7,4 +7,5 @@
 <a class="nav-item nav-link" href="{{ url('admin/quests') }}">Quests</a>
 <a class="nav-item nav-link" href="{{ url('admin/users') }}">Users</a>
 <a class="nav-item nav-link" href="{{ url('admin/rarities') }}">Rarities</a>
+<a class="nav-item nav-link" href="{{ url('admin/statistics') }}">Stats</a>
 @endsection

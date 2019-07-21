@@ -13,7 +13,7 @@ class BreedController extends Controller
 {
     public function getIndex()
     {
-        $breeds = Breed::orderBy('max_hp','desc')->orderBy('name','asc')->orderBy('created_at','asc')->paginate(8);
+        $breeds = Breed::withCount('cats')->orderBy('max_hp','desc')->orderBy('name','asc')->orderBy('created_at','asc')->paginate(8);
         return view('backend.breeds.index')->with('breeds',$breeds);
     }
 

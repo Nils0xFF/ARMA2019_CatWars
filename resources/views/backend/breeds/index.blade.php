@@ -14,6 +14,7 @@
             <th scope="col">Fur Thickness</th>
             <th scope="col">Claw Sharpness</th>
             <th scope="col">Rareness</th>
+            <th scope="col">Number of Cats</th>
             <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
             <td>{{$breed->fur_thickness}}</td>
             <td>{{$breed->claw_sharpness}}</td>
             <td>{{$breed->rarity->name}}</td>
+            <td>{{$breed->cats_count}}</td>
             <td>
                 <a class="btn btn-secondary" href="{{ url('admin/breeds/detail/'.$breed->id) }}" >Detail</a>
                 <a class="btn btn-warning" href="{{ url('admin/breeds/edit/'.$breed->id) }}" >Edit</a>

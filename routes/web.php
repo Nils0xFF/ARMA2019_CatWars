@@ -115,7 +115,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
 
     //Quests
-
     Route::get('quests', 'Backend\QuestController@getIndex');
     Route::get('quests/index', 'Backend\QuestController@getIndex');
 
@@ -128,6 +127,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::post('quests/edit/{id?}', 'Backend\QuestController@postEdit');
 
     Route::get('quests/delete/{id?}', 'Backend\QuestController@postDelete');
+
+
+    //Stats
+    Route::get('statistics', 'Backend\StatisticController@getIndex');
 });
 
 
